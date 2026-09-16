@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>منصة نورهان التعليمية</title>
 
   <style>
+
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
 
     :root {
       --cream: #fffaf4;
-      --cream-2: #f8efe5;
-      --beige: #efe0d1;
-      --beige-2: #e6d0bd;
+      --cream2: #f9f0e7;
+      --beige: #f0e1d2;
+      --beige2: #e4ccb8;
 
-      --brown-light: #c29b7c;
-      --brown: #a98264;
-      --brown-dark: #765b48;
+      --brown-light: #c8a486;
+      --brown: #ad896d;
+      --brown-dark: #765a47;
 
-      --text: #604c3d;
-      --text-light: #8b7565;
+      --text: #654f40;
+      --text-light: #927c6b;
 
       --white: #ffffff;
 
-      --shadow: 0 12px 35px rgba(125, 91, 66, 0.10);
-      --shadow-hover: 0 18px 40px rgba(125, 91, 66, 0.16);
+      --shadow: 0 12px 35px rgba(118, 90, 71, 0.10);
+      --shadow-hover: 0 18px 40px rgba(118, 90, 71, 0.17);
 
-      --radius: 24px;
+      --radius: 26px;
     }
+
 
     * {
       box-sizing: border-box;
@@ -36,151 +41,236 @@
       padding: 0;
     }
 
+
     html {
       scroll-behavior: smooth;
     }
 
+
     body {
+
       font-family: "Cairo", sans-serif;
-      background:
-        radial-gradient(circle at 10% 20%, rgba(226, 199, 176, .25), transparent 25%),
-        radial-gradient(circle at 90% 70%, rgba(226, 199, 176, .18), transparent 28%),
-        var(--cream);
 
       color: var(--text);
+
       line-height: 1.8;
+
+      background:
+        radial-gradient(
+          circle at 8% 20%,
+          rgba(226, 201, 180, .25),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 92% 65%,
+          rgba(226, 201, 180, .18),
+          transparent 28%
+        ),
+        var(--cream);
+
       overflow-x: hidden;
     }
+
 
     a {
       text-decoration: none;
       color: inherit;
     }
 
+
     button {
       font-family: inherit;
     }
 
-    /* =========================
-       الزهور الثابتة
-    ========================== */
 
-    .floral {
+    /* =====================================================
+       الزهور - ثابتة في خلفية الصفحة
+    ====================================================== */
+
+    .background-flowers {
+
       position: fixed;
-      width: 170px;
-      height: 520px;
-      top: 100px;
+
+      top: 0;
+      bottom: 0;
+
+      width: 220px;
+
       z-index: 0;
+
       pointer-events: none;
-      opacity: .55;
+
+      opacity: .43;
     }
 
-    .floral-left {
+
+    .flowers-left {
       left: -35px;
     }
 
-    .floral-right {
+
+    .flowers-right {
+
       right: -35px;
+
       transform: scaleX(-1);
     }
 
-    .floral svg {
+
+    .background-flowers svg {
+
       width: 100%;
       height: 100%;
     }
 
-    .stem {
+
+    .flower-stem {
+
       fill: none;
-      stroke: #c7a68e;
-      stroke-width: 2;
+
+      stroke: #c8a68c;
+
+      stroke-width: 2.2;
+
       stroke-linecap: round;
+
       opacity: .75;
     }
 
-    .leaf {
-      fill: #d8bca5;
-      opacity: .65;
+
+    .flower-leaf {
+
+      fill: #d4b59d;
+
+      opacity: .55;
     }
 
-    .petal {
-      fill: #e5cabb;
-      opacity: .8;
+
+    .flower-petal {
+
+      fill: #e3c8b8;
+
+      opacity: .74;
     }
+
 
     .flower-center {
-      fill: #b99477;
-      opacity: .7;
+
+      fill: #b58d70;
+
+      opacity: .75;
     }
 
-    /* =========================
-       الهيدر
-    ========================== */
+
+    /* =====================================================
+       HEADER
+    ====================================================== */
 
     header {
+
       position: relative;
+
       z-index: 10;
-      background: rgba(255, 250, 244, .93);
+
+      background: rgba(255, 250, 244, .94);
+
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(169, 130, 100, .12);
+
+      border-bottom:
+        1px solid rgba(169, 130, 100, .12);
     }
 
+
     .nav-container {
-      width: min(1180px, calc(100% - 40px));
+
+      width: min(
+        1180px,
+        calc(100% - 40px)
+      );
+
       margin: auto;
 
       min-height: 82px;
 
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
+
       gap: 30px;
     }
 
+
     .logo {
+
       display: flex;
+
       align-items: center;
+
       gap: 12px;
     }
 
+
     .logo-icon {
-      width: 48px;
-      height: 48px;
+
+      width: 49px;
+      height: 49px;
 
       border-radius: 16px;
 
       background: var(--beige);
 
       display: grid;
+
       place-items: center;
 
       color: var(--brown-dark);
+
       font-size: 23px;
     }
 
+
     .logo-text h1 {
+
       font-size: 18px;
+
       color: var(--brown-dark);
+
       font-weight: 800;
     }
 
+
     .logo-text span {
+
       display: block;
+
       color: var(--text-light);
+
       font-size: 11px;
-      margin-top: -3px;
+
+      margin-top: -4px;
     }
 
+
     nav {
+
       display: flex;
+
       align-items: center;
+
       gap: 8px;
     }
 
+
     nav a {
+
       padding: 10px 17px;
+
       border-radius: 14px;
 
       font-size: 14px;
+
       font-weight: 600;
 
       color: var(--text-light);
@@ -188,74 +278,117 @@
       transition: .25s ease;
     }
 
+
     nav a:hover,
     nav a.active {
+
       background: var(--beige);
+
       color: var(--brown-dark);
     }
 
-    /* =========================
-       المحتوى العام
-    ========================== */
+
+    /* =====================================================
+       المحتوى
+    ====================================================== */
 
     main {
+
       position: relative;
+
       z-index: 2;
     }
 
+
     .container {
-      width: min(1180px, calc(100% - 40px));
+
+      width: min(
+        1180px,
+        calc(100% - 40px)
+      );
+
       margin: auto;
     }
 
+
     section {
+
       padding: 80px 0;
     }
 
-    /* =========================
+
+    /* =====================================================
        HERO
-    ========================== */
+    ====================================================== */
 
     .hero {
+
       min-height: 620px;
 
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
+
+      grid-template-columns:
+        1.05fr
+        .95fr;
+
       align-items: center;
+
       gap: 50px;
     }
 
+
     .hero-content {
+
       padding: 20px;
     }
 
+
     .small-title {
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 8px;
 
       background: var(--beige);
+
       color: var(--brown);
 
-      padding: 8px 15px;
+      padding: 8px 16px;
+
       border-radius: 50px;
 
       font-size: 13px;
+
       font-weight: 700;
 
       margin-bottom: 20px;
     }
 
+
     .small-title::before {
+
       content: "";
+
       width: 7px;
       height: 7px;
+
       border-radius: 50%;
+
       background: var(--brown-light);
     }
 
+
     .hero h2 {
-      font-size: clamp(34px, 5vw, 58px);
+
+      font-size:
+        clamp(
+          34px,
+          5vw,
+          58px
+        );
+
       line-height: 1.35;
 
       color: var(--brown-dark);
@@ -265,26 +398,39 @@
       margin-bottom: 20px;
     }
 
+
     .hero h2 span {
+
       color: var(--brown);
     }
 
+
     .hero p {
+
       color: var(--text-light);
+
       font-size: 17px;
+
       max-width: 590px;
 
       margin-bottom: 30px;
     }
 
+
     .hero-buttons {
+
       display: flex;
+
       gap: 12px;
+
       flex-wrap: wrap;
     }
 
+
     .btn {
+
       border: none;
+
       cursor: pointer;
 
       padding: 13px 25px;
@@ -292,134 +438,193 @@
       border-radius: 16px;
 
       font-size: 14px;
+
       font-weight: 700;
 
       transition: .25s ease;
     }
 
+
     .btn-primary {
+
       background: var(--brown);
+
       color: white;
-      box-shadow: 0 8px 22px rgba(169, 130, 100, .25);
+
+      box-shadow:
+        0 8px 22px
+        rgba(169, 130, 100, .25);
     }
 
+
     .btn-primary:hover {
+
       transform: translateY(-3px);
+
       background: var(--brown-dark);
     }
 
+
     .btn-secondary {
-      background: var(--white);
+
+      background: white;
+
       color: var(--brown-dark);
 
-      border: 1px solid var(--beige-2);
+      border:
+        1px solid var(--beige2);
     }
 
+
     .btn-secondary:hover {
+
       transform: translateY(-3px);
+
       box-shadow: var(--shadow);
     }
 
-    /* =========================
-       الرسم التوضيحي
-    ========================== */
+
+    /* =====================================================
+       الرسم التعليمي
+    ====================================================== */
 
     .hero-art {
+
       min-height: 430px;
 
       display: grid;
+
       place-items: center;
 
       position: relative;
     }
 
+
     .art-circle {
-      width: min(430px, 90%);
+
+      width: min(
+        430px,
+        90%
+      );
+
       aspect-ratio: 1;
 
       border-radius: 50%;
 
       background:
-        radial-gradient(circle at 50% 45%, #fffdf9 0 32%, transparent 33%),
+        radial-gradient(
+          circle at 50% 45%,
+          #fffdf9 0 32%,
+          transparent 33%
+        ),
         var(--beige);
 
       position: relative;
     }
 
+
     .desk {
+
       position: absolute;
 
       width: 260px;
+
       height: 130px;
 
       left: 50%;
+
       top: 54%;
 
-      transform: translate(-50%, -50%);
+      transform:
+        translate(
+          -50%,
+          -50%
+        );
 
       background: #c59f82;
 
-      border-radius: 22px 22px 14px 14px;
+      border-radius:
+        22px 22px 14px 14px;
 
-      box-shadow: 0 18px 30px rgba(105, 77, 57, .12);
+      box-shadow:
+        0 18px 30px
+        rgba(105, 77, 57, .12);
     }
 
+
     .desk::after {
+
       content: "";
 
       position: absolute;
 
       width: 185px;
+
       height: 14px;
 
       background: #a98264;
 
       left: 38px;
+
       bottom: -60px;
 
-      border-radius: 0 0 12px 12px;
+      border-radius:
+        0 0 12px 12px;
     }
 
+
     .laptop {
+
       position: absolute;
 
       width: 150px;
+
       height: 95px;
 
       left: 55px;
+
       top: -65px;
 
       background: #fffaf4;
 
-      border: 8px solid #9d765b;
+      border:
+        8px solid #9d765b;
 
       border-radius: 12px;
     }
 
+
     .laptop::after {
+
       content: "نورهان";
 
       position: absolute;
 
       left: 0;
       right: 0;
-      top: 32px;
+
+      top: 31px;
 
       text-align: center;
 
       color: #b58f72;
 
       font-size: 12px;
+
       font-weight: 700;
     }
 
+
     .book {
+
       position: absolute;
 
       width: 85px;
+
       height: 18px;
 
       right: 18px;
+
       top: 30px;
 
       border-radius: 5px;
@@ -429,8 +634,11 @@
       transform: rotate(-5deg);
     }
 
+
     .book.two {
+
       top: 52px;
+
       right: 8px;
 
       background: #c7a487;
@@ -438,69 +646,142 @@
       transform: rotate(4deg);
     }
 
+
     .plant {
+
       position: absolute;
 
       width: 70px;
+
       height: 95px;
 
       left: 22px;
+
       top: -65px;
     }
 
+
     .plant-pot {
+
       position: absolute;
 
       bottom: 0;
+
       left: 20px;
 
       width: 40px;
+
       height: 35px;
 
       background: #b98e70;
 
-      border-radius: 5px 5px 14px 14px;
+      border-radius:
+        5px 5px 14px 14px;
     }
 
+
     .leaf-shape {
+
       position: absolute;
 
       width: 28px;
+
       height: 42px;
 
       background: #c5a58e;
 
-      border-radius: 100% 0 100% 0;
+      border-radius:
+        100% 0 100% 0;
 
-      transform-origin: bottom center;
+      transform-origin:
+        bottom center;
     }
 
+
     .leaf-one {
+
       left: 30px;
+
       bottom: 28px;
+
       transform: rotate(-28deg);
     }
 
+
     .leaf-two {
+
       left: 10px;
+
       bottom: 35px;
+
       transform: rotate(-60deg);
     }
 
+
     .leaf-three {
+
       left: 40px;
+
       bottom: 47px;
+
       transform: rotate(22deg);
     }
 
-    /* =========================
-       بطاقات الخطوات
-    ========================== */
+
+    /* =====================================================
+       عنوان الأقسام
+    ====================================================== */
+
+    .section-heading {
+
+      text-align: center;
+
+      margin-bottom: 40px;
+    }
+
+
+    .section-heading small {
+
+      color: var(--brown);
+
+      font-weight: 700;
+
+      font-size: 13px;
+    }
+
+
+    .section-heading h3 {
+
+      color: var(--brown-dark);
+
+      font-size: 30px;
+
+      margin-top: 5px;
+    }
+
+
+    .section-heading p {
+
+      color: var(--text-light);
+
+      font-size: 14px;
+
+      margin-top: 7px;
+    }
+
+
+    /* =====================================================
+       خطوات التعلم
+    ====================================================== */
 
     .journey {
-      background: rgba(255,255,255,.7);
 
-      border: 1px solid rgba(169,130,100,.13);
+      background:
+        rgba(255,255,255,.76);
+
+      border:
+        1px solid
+        rgba(169,130,100,.13);
 
       border-radius: 30px;
 
@@ -509,37 +790,21 @@
       box-shadow: var(--shadow);
     }
 
-    .section-heading {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .section-heading small {
-      color: var(--brown);
-      font-weight: 700;
-      font-size: 13px;
-    }
-
-    .section-heading h3 {
-      color: var(--brown-dark);
-      font-size: 30px;
-      margin-top: 5px;
-    }
-
-    .section-heading p {
-      color: var(--text-light);
-      font-size: 14px;
-      margin-top: 7px;
-    }
 
     .steps {
+
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 18px;
     }
 
+
     .step {
-      background: var(--cream-2);
+
+      background: var(--cream2);
 
       border-radius: 22px;
 
@@ -550,51 +815,73 @@
       transition: .25s ease;
     }
 
+
     .step:hover {
+
       transform: translateY(-5px);
+
       box-shadow: var(--shadow);
     }
 
+
     .step-number {
+
       width: 48px;
       height: 48px;
 
-      margin: auto auto 14px;
+      margin:
+        auto auto 14px;
 
       border-radius: 15px;
 
-      background: var(--white);
+      background: white;
 
       display: grid;
+
       place-items: center;
 
       color: var(--brown);
+
       font-weight: 800;
     }
 
+
     .step h4 {
+
       color: var(--brown-dark);
+
       margin-bottom: 5px;
+
       font-size: 16px;
     }
 
+
     .step p {
+
       color: var(--text-light);
+
       font-size: 12px;
     }
 
-    /* =========================
-       مكتبة الطلاب
-    ========================== */
+
+    /* =====================================================
+       مكتبة الدروس
+    ====================================================== */
 
     #lessons {
+
       scroll-margin-top: 30px;
     }
 
-    .subject {
-      background: rgba(255,255,255,.78);
 
-      border: 1px solid rgba(169,130,100,.12);
+    .subject {
+
+      background:
+        rgba(255,255,255,.80);
+
+      border:
+        1px solid
+        rgba(169,130,100,.12);
 
       border-radius: 28px;
 
@@ -605,57 +892,79 @@
       box-shadow: var(--shadow);
     }
 
+
     .subject-header {
+
       display: flex;
+
       align-items: center;
+
       gap: 15px;
 
       margin-bottom: 25px;
     }
 
+
     .subject-icon {
-      width: 55px;
-      height: 55px;
+
+      width: 58px;
+      height: 58px;
 
       border-radius: 18px;
 
       background: var(--beige);
 
       display: grid;
+
       place-items: center;
 
-      font-size: 24px;
+      font-size: 25px;
     }
 
+
     .subject-header h4 {
+
       font-size: 21px;
+
       color: var(--brown-dark);
     }
 
+
     .subject-header p {
+
       font-size: 12px;
+
       color: var(--text-light);
     }
 
+
     .grades {
+
       display: grid;
 
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns:
+        repeat(3, 1fr);
 
       gap: 14px;
     }
 
+
     .grade {
+
       background: var(--cream);
 
-      border: 1px solid var(--beige);
+      border:
+        1px solid
+        var(--beige);
 
       border-radius: 18px;
 
       padding: 17px;
 
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
 
       cursor: pointer;
@@ -663,38 +972,56 @@
       transition: .25s ease;
     }
 
+
     .grade:hover {
+
       background: var(--beige);
+
       transform: translateY(-3px);
+
       box-shadow: var(--shadow);
     }
 
+
     .grade strong {
+
       color: var(--brown-dark);
+
       font-size: 14px;
     }
 
+
     .grade span {
+
       width: 30px;
       height: 30px;
 
       border-radius: 10px;
 
-      background: var(--white);
+      background: white;
 
       display: grid;
+
       place-items: center;
 
       color: var(--brown);
+
+      font-weight: 800;
     }
 
-    /* =========================
+
+    /* =====================================================
        التواصل
-    ========================== */
+    ====================================================== */
 
     .contact-box {
+
       background:
-        linear-gradient(135deg, #f1e2d3, #fffaf4);
+        linear-gradient(
+          135deg,
+          #f1e2d3,
+          #fffaf4
+        );
 
       border-radius: 32px;
 
@@ -702,62 +1029,90 @@
 
       text-align: center;
 
-      border: 1px solid var(--beige-2);
+      border:
+        1px solid
+        var(--beige2);
     }
 
+
     .contact-box h3 {
+
       color: var(--brown-dark);
+
       font-size: 28px;
+
       margin-bottom: 10px;
     }
 
+
     .contact-box p {
+
       color: var(--text-light);
+
       font-size: 14px;
+
       margin-bottom: 22px;
     }
 
-    /* =========================
-       زر التواصل العائم
-    ========================== */
+
+    /* =====================================================
+       زر واتساب العائم
+    ====================================================== */
 
     .floating-contact {
+
       position: fixed;
 
       left: 22px;
+
       bottom: 22px;
 
-      width: 55px;
-      height: 55px;
+      width: 58px;
+      height: 58px;
 
       border-radius: 50%;
 
-      background: var(--brown);
+      background: #ad896d;
 
       color: white;
 
       display: grid;
+
       place-items: center;
 
       font-size: 22px;
 
-      box-shadow: 0 10px 25px rgba(118,91,72,.25);
+      box-shadow:
+        0 10px 25px
+        rgba(118,91,72,.25);
 
       z-index: 20;
 
       transition: .25s ease;
     }
 
+
     .floating-contact:hover {
-      transform: translateY(-4px) scale(1.04);
-      background: var(--brown-dark);
+
+      transform:
+        translateY(-4px)
+        scale(1.04);
+
+      background:
+        var(--brown-dark);
     }
 
-    /* =========================
+
+    /* =====================================================
        FOOTER
-    ========================== */
+    ====================================================== */
 
     footer {
+
+      position: relative;
+
+      z-index: 2;
+
       background: #f1e5da;
 
       margin-top: 40px;
@@ -771,191 +1126,541 @@
       font-size: 12px;
     }
 
+
     footer strong {
+
       color: var(--brown-dark);
     }
 
-    /* =========================
+
+    /* =====================================================
        الموبايل
-    ========================== */
+    ====================================================== */
 
     @media (max-width: 850px) {
 
       .nav-container {
+
         flex-direction: column;
+
         padding: 15px 0;
+
         gap: 12px;
       }
 
+
       nav {
+
         width: 100%;
+
         justify-content: center;
+
         flex-wrap: wrap;
       }
 
+
       nav a {
-        padding: 8px 12px;
+
+        padding:
+          8px 12px;
+
         font-size: 12px;
       }
 
+
       .hero {
+
         grid-template-columns: 1fr;
+
         text-align: center;
 
         padding-top: 35px;
       }
 
+
       .hero-content {
+
         padding: 0;
       }
 
+
       .hero p {
-        margin-left: auto;
-        margin-right: auto;
+
+        margin:
+          0 auto 30px;
       }
 
+
       .hero-buttons {
+
         justify-content: center;
       }
 
+
       .hero-art {
+
         min-height: 340px;
       }
 
+
       .steps {
+
         grid-template-columns: 1fr;
       }
 
+
       .grades {
-        grid-template-columns: 1fr 1fr;
+
+        grid-template-columns:
+          1fr 1fr;
       }
 
-      .floral {
-        width: 85px;
+
+      .background-flowers {
+
+        width: 110px;
+
         opacity: .22;
       }
 
-      .floral-left {
-        left: -42px;
+
+      .flowers-left {
+
+        left: -58px;
       }
 
-      .floral-right {
-        right: -42px;
+
+      .flowers-right {
+
+        right: -58px;
       }
+
     }
+
 
     @media (max-width: 520px) {
 
       .container {
-        width: min(100% - 24px, 1180px);
+
+        width:
+          min(
+            calc(100% - 24px),
+            1180px
+          );
       }
 
+
       section {
+
         padding: 55px 0;
       }
 
+
       .hero h2 {
+
         font-size: 34px;
       }
 
+
       .hero p {
+
         font-size: 14px;
       }
 
+
       .art-circle {
+
         width: 310px;
       }
 
+
       .desk {
-        transform: translate(-50%, -50%) scale(.8);
+
+        transform:
+          translate(-50%, -50%)
+          scale(.8);
       }
 
+
       .journey {
+
         padding: 22px 15px;
       }
 
+
       .subject {
+
         padding: 20px 15px;
       }
 
+
       .grades {
+
         grid-template-columns: 1fr;
       }
 
+
       .contact-box {
+
         padding: 32px 20px;
       }
 
+
       .contact-box h3 {
+
         font-size: 23px;
       }
+
+
+      .floating-contact {
+
+        left: 15px;
+
+        bottom: 15px;
+
+        width: 52px;
+
+        height: 52px;
+      }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
-  <!-- =================================
-       الزهرة اليسرى
-  ================================== -->
 
-  <div class="floral floral-left" aria-hidden="true">
+  <!-- =====================================================
+       الزهور الثابتة - اليسار
+  ====================================================== -->
 
-    <svg viewBox="0 0 180 520">
+  <div
+    class="background-flowers flowers-left"
+    aria-hidden="true"
+  >
 
-      <path class="stem"
-        d="M95 520
-           C88 430 105 350 78 280
-           C60 230 75 160 45 90" />
+    <svg viewBox="0 0 220 900">
 
-      <path class="stem"
-        d="M79 300
-           C115 255 125 205 110 150" />
+      <path
+        class="flower-stem"
+        d="M105 900
+           C95 760 125 650 85 540
+           C55 455 85 355 45 250
+           C25 195 45 110 20 30"
+      />
 
-      <path class="stem"
-        d="M67 245
-           C35 220 25 180 30 145" />
 
-      <ellipse class="leaf" cx="58" cy="355"
-        rx="12" ry="30"
-        transform="rotate(-55 58 355)" />
+      <path
+        class="flower-stem"
+        d="M85 555
+           C135 500 155 425 140 345"
+      />
 
-      <ellipse class="leaf" cx="99" cy="325"
-        rx="11" ry="28"
-        transform="rotate(45 99 325)" />
 
-      <ellipse class="leaf" cx="67" cy="245"
-        rx="11" ry="27"
-        transform="rotate(-70 67 245)" />
+      <path
+        class="flower-stem"
+        d="M70 455
+           C25 420 15 360 25 305"
+      />
 
-      <ellipse class="leaf" cx="105" cy="200"
-        rx="10" ry="25"
-        transform="rotate(48 105 200)" />
 
-      <!-- زهرة -->
+      <path
+        class="flower-stem"
+        d="M100 700
+           C150 650 175 590 170 530"
+      />
 
-      <g transform="translate(45 88)">
-        <ellipse class="petal" cx="0" cy="-14" rx="12" ry="20"/>
-        <ellipse class="petal" cx="14" cy="0" rx="20" ry="12"/>
-        <ellipse class="petal" cx="0" cy="14" rx="12" ry="20"/>
-        <ellipse class="petal" cx="-14" cy="0" rx="20" ry="12"/>
-        <circle class="flower-center" cx="0" cy="0" r="7"/>
+
+      <ellipse
+        class="flower-leaf"
+        cx="74"
+        cy="680"
+        rx="15"
+        ry="42"
+        transform="rotate(-55 74 680)"
+      />
+
+
+      <ellipse
+        class="flower-leaf"
+        cx="120"
+        cy="625"
+        rx="14"
+        ry="38"
+        transform="rotate(50 120 625)"
+      />
+
+
+      <ellipse
+        class="flower-leaf"
+        cx="70"
+        cy="455"
+        rx="14"
+        ry="40"
+        transform="rotate(-65 70 455)"
+      />
+
+
+      <ellipse
+        class="flower-leaf"
+        cx="126"
+        cy="395"
+        rx="13"
+        ry="38"
+        transform="rotate(45 126 395)"
+      />
+
+
+      <ellipse
+        class="flower-leaf"
+        cx="52"
+        cy="280"
+        rx="12"
+        ry="35"
+        transform="rotate(-60 52 280)"
+      />
+
+
+      <ellipse
+        class="flower-leaf"
+        cx="155"
+        cy="570"
+        rx="13"
+        ry="38"
+        transform="rotate(55 155 570)"
+      />
+
+
+      <!-- زهرة 1 -->
+
+      <g transform="translate(20 30)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-22"
+          rx="15"
+          ry="28"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="22"
+          cy="0"
+          rx="28"
+          ry="15"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="22"
+          rx="15"
+          ry="28"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-22"
+          cy="0"
+          rx="28"
+          ry="15"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="8"
+        />
+
       </g>
 
-      <g transform="translate(110 148)">
-        <ellipse class="petal" cx="0" cy="-12" rx="10" ry="17"/>
-        <ellipse class="petal" cx="13" cy="0" rx="17" ry="10"/>
-        <ellipse class="petal" cx="0" cy="13" rx="10" ry="17"/>
-        <ellipse class="petal" cx="-13" cy="0" rx="17" ry="10"/>
-        <circle class="flower-center" cx="0" cy="0" r="6"/>
+
+      <!-- زهرة 2 -->
+
+      <g transform="translate(140 345)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-19"
+          rx="13"
+          ry="25"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="20"
+          cy="0"
+          rx="25"
+          ry="13"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="19"
+          rx="13"
+          ry="25"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-20"
+          cy="0"
+          rx="25"
+          ry="13"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="7"
+        />
+
       </g>
 
-      <g transform="translate(28 145)">
-        <ellipse class="petal" cx="0" cy="-10" rx="9" ry="15"/>
-        <ellipse class="petal" cx="11" cy="0" rx="15" ry="9"/>
-        <ellipse class="petal" cx="0" cy="10" rx="9" ry="15"/>
-        <ellipse class="petal" cx="-11" cy="0" rx="15" ry="9"/>
-        <circle class="flower-center" cx="0" cy="0" r="5"/>
+
+      <!-- زهرة 3 -->
+
+      <g transform="translate(25 305)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-16"
+          rx="11"
+          ry="22"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="17"
+          cy="0"
+          rx="22"
+          ry="11"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="16"
+          rx="11"
+          ry="22"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-17"
+          cy="0"
+          rx="22"
+          ry="11"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="6"
+        />
+
+      </g>
+
+
+      <!-- زهرة 4 -->
+
+      <g transform="translate(170 530)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-20"
+          rx="13"
+          ry="26"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="21"
+          cy="0"
+          rx="26"
+          ry="13"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="20"
+          rx="13"
+          ry="26"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-21"
+          cy="0"
+          rx="26"
+          ry="13"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="7"
+        />
+
+      </g>
+
+
+      <!-- زهرة 5 -->
+
+      <g transform="translate(105 735)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-17"
+          rx="12"
+          ry="23"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="18"
+          cy="0"
+          rx="23"
+          ry="12"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="17"
+          rx="12"
+          ry="23"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-18"
+          cy="0"
+          rx="23"
+          ry="12"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="6"
+        />
+
       </g>
 
     </svg>
@@ -963,65 +1668,324 @@
   </div>
 
 
-  <!-- =================================
-       الزهرة اليمنى
-  ================================== -->
+  <!-- =====================================================
+       الزهور الثابتة - اليمين
+  ====================================================== -->
 
-  <div class="floral floral-right" aria-hidden="true">
+  <div
+    class="background-flowers flowers-right"
+    aria-hidden="true"
+  >
 
-    <svg viewBox="0 0 180 520">
+    <svg viewBox="0 0 220 900">
 
-      <path class="stem"
-        d="M95 520
-           C88 430 105 350 78 280
-           C60 230 75 160 45 90" />
+      <path
+        class="flower-stem"
+        d="M105 900
+           C95 760 125 650 85 540
+           C55 455 85 355 45 250
+           C25 195 45 110 20 30"
+      />
 
-      <path class="stem"
-        d="M79 300
-           C115 255 125 205 110 150" />
 
-      <path class="stem"
-        d="M67 245
-           C35 220 25 180 30 145" />
+      <path
+        class="flower-stem"
+        d="M85 555
+           C135 500 155 425 140 345"
+      />
 
-      <ellipse class="leaf" cx="58" cy="355"
-        rx="12" ry="30"
-        transform="rotate(-55 58 355)" />
 
-      <ellipse class="leaf" cx="99" cy="325"
-        rx="11" ry="28"
-        transform="rotate(45 99 325)" />
+      <path
+        class="flower-stem"
+        d="M70 455
+           C25 420 15 360 25 305"
+      />
 
-      <ellipse class="leaf" cx="67" cy="245"
-        rx="11" ry="27"
-        transform="rotate(-70 67 245)" />
 
-      <ellipse class="leaf" cx="105" cy="200"
-        rx="10" ry="25"
-        transform="rotate(48 105 200)" />
+      <path
+        class="flower-stem"
+        d="M100 700
+           C150 650 175 590 170 530"
+      />
 
-      <g transform="translate(45 88)">
-        <ellipse class="petal" cx="0" cy="-14" rx="12" ry="20"/>
-        <ellipse class="petal" cx="14" cy="0" rx="20" ry="12"/>
-        <ellipse class="petal" cx="0" cy="14" rx="12" ry="20"/>
-        <ellipse class="petal" cx="-14" cy="0" rx="20" ry="12"/>
-        <circle class="flower-center" cx="0" cy="0" r="7"/>
+
+      <ellipse
+        class="flower-leaf"
+        cx="74"
+        cy="680"
+        rx="15"
+        ry="42"
+        transform="rotate(-55 74 680)"
+      />
+
+
+      <ellipse
+        class="flower-leaf"
+        cx="120"
+        cy="625"
+        rx="14"
+        ry="38"
+        transform="rotate(50 120 625)"
+      />
+
+
+      <ellipse
+        class="flower-leaf"
+        cx="70"
+        cy="455"
+        rx="14"
+        ry="40"
+        transform="rotate(-65 70 455)"
+      />
+
+
+      <ellipse
+        class="flower-leaf"
+        cx="126"
+        cy="395"
+        rx="13"
+        ry="38"
+        transform="rotate(45 126 395)"
+      />
+
+
+      <ellipse
+        class="flower-leaf"
+        cx="52"
+        cy="280"
+        rx="12"
+        ry="35"
+        transform="rotate(-60 52 280)"
+      />
+
+
+      <ellipse
+        class="flower-leaf"
+        cx="155"
+        cy="570"
+        rx="13"
+        ry="38"
+        transform="rotate(55 155 570)"
+      />
+
+
+      <g transform="translate(20 30)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-22"
+          rx="15"
+          ry="28"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="22"
+          cy="0"
+          rx="28"
+          ry="15"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="22"
+          rx="15"
+          ry="28"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-22"
+          cy="0"
+          rx="28"
+          ry="15"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="8"
+        />
+
       </g>
 
-      <g transform="translate(110 148)">
-        <ellipse class="petal" cx="0" cy="-12" rx="10" ry="17"/>
-        <ellipse class="petal" cx="13" cy="0" rx="17" ry="10"/>
-        <ellipse class="petal" cx="0" cy="13" rx="10" ry="17"/>
-        <ellipse class="petal" cx="-13" cy="0" rx="17" ry="10"/>
-        <circle class="flower-center" cx="0" cy="0" r="6"/>
+
+      <g transform="translate(140 345)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-19"
+          rx="13"
+          ry="25"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="20"
+          cy="0"
+          rx="25"
+          ry="13"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="19"
+          rx="13"
+          ry="25"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-20"
+          cy="0"
+          rx="25"
+          ry="13"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="7"
+        />
+
       </g>
 
-      <g transform="translate(28 145)">
-        <ellipse class="petal" cx="0" cy="-10" rx="9" ry="15"/>
-        <ellipse class="petal" cx="11" cy="0" rx="15" ry="9"/>
-        <ellipse class="petal" cx="0" cy="10" rx="9" ry="15"/>
-        <ellipse class="petal" cx="-11" cy="0" rx="15" ry="9"/>
-        <circle class="flower-center" cx="0" cy="0" r="5"/>
+
+      <g transform="translate(25 305)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-16"
+          rx="11"
+          ry="22"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="17"
+          cy="0"
+          rx="22"
+          ry="11"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="16"
+          rx="11"
+          ry="22"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-17"
+          cy="0"
+          rx="22"
+          ry="11"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="6"
+        />
+
+      </g>
+
+
+      <g transform="translate(170 530)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-20"
+          rx="13"
+          ry="26"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="21"
+          cy="0"
+          rx="26"
+          ry="13"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="20"
+          rx="13"
+          ry="26"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-21"
+          cy="0"
+          rx="26"
+          ry="13"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="7"
+        />
+
+      </g>
+
+
+      <g transform="translate(105 735)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-17"
+          rx="12"
+          ry="23"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="18"
+          cy="0"
+          rx="23"
+          ry="12"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="17"
+          rx="12"
+          ry="23"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-18"
+          cy="0"
+          rx="23"
+          ry="12"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="6"
+        />
+
       </g>
 
     </svg>
@@ -1029,9 +1993,9 @@
   </div>
 
 
-  <!-- =================================
+  <!-- =====================================================
        HEADER
-  ================================== -->
+  ====================================================== -->
 
   <header>
 
@@ -1044,8 +2008,15 @@
         </div>
 
         <div class="logo-text">
-          <h1>منصة نورهان التعليمية</h1>
-          <span>معًا نحو مستقبل أفضل</span>
+
+          <h1>
+            منصة نورهان التعليمية
+          </h1>
+
+          <span>
+            معًا نحو مستقبل أفضل
+          </span>
+
         </div>
 
       </a>
@@ -1053,13 +2024,18 @@
 
       <nav>
 
-        <a href="#" class="active">
+        <a
+          href="#"
+          class="active"
+        >
           الرئيسية
         </a>
+
 
         <a href="#lessons">
           الدروس
         </a>
+
 
         <a href="#contact">
           تواصل معنا
@@ -1072,15 +2048,19 @@
   </header>
 
 
+  <!-- =====================================================
+       MAIN
+  ====================================================== -->
+
   <main>
 
-    <!-- =================================
-         HERO
-    ================================== -->
+
+    <!-- ================= HERO ================= -->
 
     <section>
 
       <div class="container hero">
+
 
         <div class="hero-content">
 
@@ -1088,25 +2068,43 @@
             منصتك التعليمية
           </div>
 
+
           <h2>
+
             تعلّمي
-            <span>بأسلوب مختلف</span>
+
+            <span>
+              بأسلوب مختلف
+            </span>
+
             وابدئي رحلتك نحو النجاح
+
           </h2>
 
+
           <p>
+
             هنا هتلاقي دروسك التعليمية بطريقة بسيطة،
             منظمة وممتعة، تساعدك تفهمي المعلومة
             بدل ما تحفظيها فقط.
+
           </p>
+
 
           <div class="hero-buttons">
 
-            <a href="#lessons" class="btn btn-primary">
+            <a
+              href="#lessons"
+              class="btn btn-primary"
+            >
               ابدئي التعلم
             </a>
 
-            <a href="#contact" class="btn btn-secondary">
+
+            <a
+              href="#contact"
+              class="btn btn-secondary"
+            >
               تواصلي معنا
             </a>
 
@@ -1115,7 +2113,7 @@
         </div>
 
 
-        <!-- الرسم -->
+        <!-- الرسم التعليمي -->
 
         <div class="hero-art">
 
@@ -1126,13 +2124,23 @@
               <div class="laptop"></div>
 
               <div class="book"></div>
+
               <div class="book two"></div>
+
 
               <div class="plant">
 
-                <div class="leaf-shape leaf-one"></div>
-                <div class="leaf-shape leaf-two"></div>
-                <div class="leaf-shape leaf-three"></div>
+                <div
+                  class="leaf-shape leaf-one"
+                ></div>
+
+                <div
+                  class="leaf-shape leaf-two"
+                ></div>
+
+                <div
+                  class="leaf-shape leaf-three"
+                ></div>
 
                 <div class="plant-pot"></div>
 
@@ -1149,21 +2157,24 @@
     </section>
 
 
-    <!-- =================================
-         رحلتك
-    ================================== -->
+    <!-- ================= خطوات التعلم ================= -->
 
     <section>
 
       <div class="container">
 
+
         <div class="section-heading">
 
-          <small>رحلتك التعليمية</small>
+          <small>
+            رحلتك التعليمية
+          </small>
+
 
           <h3>
             التعلم أصبح أسهل
           </h3>
+
 
           <p>
             ثلاث خطوات بسيطة توصلك للمعلومة
@@ -1175,6 +2186,7 @@
         <div class="journey">
 
           <div class="steps">
+
 
             <div class="step">
 
@@ -1229,6 +2241,7 @@
 
             </div>
 
+
           </div>
 
         </div>
@@ -1238,21 +2251,26 @@
     </section>
 
 
-    <!-- =================================
+    <!-- =====================================================
          مكتبة الدروس
-    ================================== -->
+    ====================================================== -->
 
     <section id="lessons">
 
       <div class="container">
 
+
         <div class="section-heading">
 
-          <small>مكتبة الدروس</small>
+          <small>
+            مكتبة الدروس
+          </small>
+
 
           <h3>
             اختاري المادة والصف
           </h3>
+
 
           <p>
             جميع الدروس ستكون منظمة حسب المادة والمرحلة الدراسية
@@ -1261,9 +2279,10 @@
         </div>
 
 
-        <!-- الدراسات الاجتماعية -->
+        <!-- ================= الدراسات الاجتماعية ================= -->
 
         <div class="subject">
+
 
           <div class="subject-header">
 
@@ -1271,12 +2290,17 @@
               🌍
             </div>
 
+
             <div>
-              <h4>الدراسات الاجتماعية</h4>
+
+              <h4>
+                الدراسات الاجتماعية
+              </h4>
 
               <p>
                 المرحلة الابتدائية والإعدادية
               </p>
+
             </div>
 
           </div>
@@ -1284,44 +2308,118 @@
 
           <div class="grades">
 
-            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الرابع الابتدائي')">
-              <strong>الصف الرابع الابتدائي</strong>
-              <span>←</span>
+
+            <a
+              href="#"
+              class="grade"
+              onclick="comingSoon(event,'الصف الرابع الابتدائي')"
+            >
+
+              <strong>
+                الصف الرابع الابتدائي
+              </strong>
+
+              <span>
+                ←
+              </span>
+
             </a>
 
-            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الخامس الابتدائي')">
-              <strong>الصف الخامس الابتدائي</strong>
-              <span>←</span>
+
+            <a
+              href="#"
+              class="grade"
+              onclick="comingSoon(event,'الصف الخامس الابتدائي')"
+            >
+
+              <strong>
+                الصف الخامس الابتدائي
+              </strong>
+
+              <span>
+                ←
+              </span>
+
             </a>
 
-            <a href="#" class="grade" onclick="comingSoon(event, 'الصف السادس الابتدائي')">
-              <strong>الصف السادس الابتدائي</strong>
-              <span>←</span>
+
+            <a
+              href="#"
+              class="grade"
+              onclick="comingSoon(event,'الصف السادس الابتدائي')"
+            >
+
+              <strong>
+                الصف السادس الابتدائي
+              </strong>
+
+              <span>
+                ←
+              </span>
+
             </a>
 
-            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الأول الإعدادي')">
-              <strong>الصف الأول الإعدادي</strong>
-              <span>←</span>
+
+            <a
+              href="#"
+              class="grade"
+              onclick="comingSoon(event,'الصف الأول الإعدادي')"
+            >
+
+              <strong>
+                الصف الأول الإعدادي
+              </strong>
+
+              <span>
+                ←
+              </span>
+
             </a>
 
-            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الثاني الإعدادي')">
-              <strong>الصف الثاني الإعدادي</strong>
-              <span>←</span>
+
+            <a
+              href="#"
+              class="grade"
+              onclick="comingSoon(event,'الصف الثاني الإعدادي')"
+            >
+
+              <strong>
+                الصف الثاني الإعدادي
+              </strong>
+
+              <span>
+                ←
+              </span>
+
             </a>
 
-            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الثالث الإعدادي')">
-              <strong>الصف الثالث الإعدادي</strong>
-              <span>←</span>
+
+            <a
+              href="#"
+              class="grade"
+              onclick="comingSoon(event,'الصف الثالث الإعدادي')"
+            >
+
+              <strong>
+                الصف الثالث الإعدادي
+              </strong>
+
+              <span>
+                ←
+              </span>
+
             </a>
+
 
           </div>
 
         </div>
 
 
-        <!-- التاريخ -->
+        <!-- ================= التاريخ ================= -->
 
         <div class="subject">
+
 
           <div class="subject-header">
 
@@ -1329,12 +2427,17 @@
               🏺
             </div>
 
+
             <div>
-              <h4>التاريخ</h4>
+
+              <h4>
+                التاريخ
+              </h4>
 
               <p>
                 المرحلة الثانوية
               </p>
+
             </div>
 
           </div>
@@ -1342,29 +2445,67 @@
 
           <div class="grades">
 
-            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الأول الثانوي - التاريخ')">
-              <strong>الصف الأول الثانوي</strong>
-              <span>←</span>
+
+            <a
+              href="#"
+              class="grade"
+              onclick="comingSoon(event,'الصف الأول الثانوي - التاريخ')"
+            >
+
+              <strong>
+                الصف الأول الثانوي
+              </strong>
+
+              <span>
+                ←
+              </span>
+
             </a>
 
-            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الثاني الثانوي - التاريخ')">
-              <strong>الصف الثاني الثانوي</strong>
-              <span>←</span>
+
+            <a
+              href="#"
+              class="grade"
+              onclick="comingSoon(event,'الصف الثاني الثانوي - التاريخ')"
+            >
+
+              <strong>
+                الصف الثاني الثانوي
+              </strong>
+
+              <span>
+                ←
+              </span>
+
             </a>
 
-            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الثالث الثانوي - التاريخ')">
-              <strong>الصف الثالث الثانوي</strong>
-              <span>←</span>
+
+            <a
+              href="#"
+              class="grade"
+              onclick="comingSoon(event,'الصف الثالث الثانوي - التاريخ')"
+            >
+
+              <strong>
+                الصف الثالث الثانوي
+              </strong>
+
+              <span>
+                ←
+              </span>
+
             </a>
+
 
           </div>
 
         </div>
 
 
-        <!-- الجغرافيا -->
+        <!-- ================= الجغرافيا ================= -->
 
         <div class="subject">
+
 
           <div class="subject-header">
 
@@ -1372,12 +2513,17 @@
               🗺️
             </div>
 
+
             <div>
-              <h4>الجغرافيا</h4>
+
+              <h4>
+                الجغرافيا
+              </h4>
 
               <p>
                 المرحلة الثانوية
               </p>
+
             </div>
 
           </div>
@@ -1385,20 +2531,57 @@
 
           <div class="grades">
 
-            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الأول الثانوي - الجغرافيا')">
-              <strong>الصف الأول الثانوي</strong>
-              <span>←</span>
+
+            <a
+              href="#"
+              class="grade"
+              onclick="comingSoon(event,'الصف الأول الثانوي - الجغرافيا')"
+            >
+
+              <strong>
+                الصف الأول الثانوي
+              </strong>
+
+              <span>
+                ←
+              </span>
+
             </a>
 
-            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الثاني الثانوي - الجغرافيا')">
-              <strong>الصف الثاني الثانوي</strong>
-              <span>←</span>
+
+            <a
+              href="#"
+              class="grade"
+              onclick="comingSoon(event,'الصف الثاني الثانوي - الجغرافيا')"
+            >
+
+              <strong>
+                الصف الثاني الثانوي
+              </strong>
+
+              <span>
+                ←
+              </span>
+
             </a>
 
-            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الثالث الثانوي - الجغرافيا')">
-              <strong>الصف الثالث الثانوي</strong>
-              <span>←</span>
+
+            <a
+              href="#"
+              class="grade"
+              onclick="comingSoon(event,'الصف الثالث الثانوي - الجغرافيا')"
+            >
+
+              <strong>
+                الصف الثالث الثانوي
+              </strong>
+
+              <span>
+                ←
+              </span>
+
             </a>
+
 
           </div>
 
@@ -1409,13 +2592,14 @@
     </section>
 
 
-    <!-- =================================
+    <!-- =====================================================
          التواصل
-    ================================== -->
+    ====================================================== -->
 
     <section id="contact">
 
       <div class="container">
+
 
         <div class="contact-box">
 
@@ -1423,21 +2607,26 @@
             محتاجة مساعدة؟
           </h3>
 
+
           <p>
             لو عندك أي سؤال أو استفسار، تواصلي معنا مباشرة.
           </p>
 
+
           <!--
-            مهم:
-            ضعي هنا رابط Messenger أو رسائل صفحة فيسبوك الخاصة بك.
+            زر واتساب
+            الرقم مربوط بالرابط ولكن لا يظهر للطلاب
           -->
 
           <a
-            href="#"
+            href="https://wa.me/201150170220"
+            target="_blank"
+            rel="noopener noreferrer"
             class="btn btn-primary"
-            onclick="contactPlaceholder(event)"
           >
-            💬 تواصلي معنا
+
+            💬 تواصلي معنا عبر واتساب
+
           </a>
 
         </div>
@@ -1446,25 +2635,28 @@
 
     </section>
 
+
   </main>
 
 
-  <!-- =================================
-       زر التواصل العائم
-  ================================== -->
+  <!-- =====================================================
+       زر واتساب عائم
+  ====================================================== -->
 
   <a
-    href="#contact"
+    href="https://wa.me/201150170220"
+    target="_blank"
+    rel="noopener noreferrer"
     class="floating-contact"
-    title="تواصل معنا"
+    title="تواصل معنا عبر واتساب"
   >
     💬
   </a>
 
 
-  <!-- =================================
+  <!-- =====================================================
        FOOTER
-  ================================== -->
+  ====================================================== -->
 
   <footer>
 
@@ -1486,24 +2678,16 @@
       event.preventDefault();
 
       alert(
-        "📚 " + grade +
-        "\\n\\nسيتم إضافة الدروس الخاصة بهذا الصف قريبًا."
-      );
-
-    }
-
-
-    function contactPlaceholder(event) {
-
-      event.preventDefault();
-
-      alert(
-        "💬 سيتم ربط زر التواصل بصفحة الرسائل الخاصة بك.\\n\\nأرسلي لي رابط صفحة فيسبوك الخاصة بك وسأضعه في المكان الصحيح."
+        "📚 " +
+        grade +
+        "\n\nسيتم إضافة الدروس الخاصة بهذا الصف قريبًا."
       );
 
     }
 
   </script>
 
+
 </body>
+
 </html>
