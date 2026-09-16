@@ -1,50 +1,34 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>منصة نورهان التعليمية</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
   <style>
-
-    /* =========================
-       الألوان الأساسية
-    ========================= */
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
 
     :root {
-      --brown-dark: #80604d;
-      --brown: #a47b5d;
-      --brown-light: #c49b7b;
+      --cream: #fffaf4;
+      --cream-2: #f8efe5;
+      --beige: #efe0d1;
+      --beige-2: #e6d0bd;
 
-      --cream: #faf3e9;
-      --cream-2: #f5eadc;
-      --cream-3: #eee0d0;
+      --brown-light: #c29b7c;
+      --brown: #a98264;
+      --brown-dark: #765b48;
 
-      --white: #fffdf9;
+      --text: #604c3d;
+      --text-light: #8b7565;
 
-      --text: #624f42;
-      --muted: #8b7768;
+      --white: #ffffff;
 
-      --border: #ead9c7;
+      --shadow: 0 12px 35px rgba(125, 91, 66, 0.10);
+      --shadow-hover: 0 18px 40px rgba(125, 91, 66, 0.16);
 
-      --shadow:
-        0 10px 30px rgba(128, 96, 77, 0.10);
+      --radius: 24px;
     }
-
-
-    /* =========================
-       RESET
-    ========================= */
 
     * {
       box-sizing: border-box;
@@ -58,7 +42,11 @@
 
     body {
       font-family: "Cairo", sans-serif;
-      background: var(--cream);
+      background:
+        radial-gradient(circle at 10% 20%, rgba(226, 199, 176, .25), transparent 25%),
+        radial-gradient(circle at 90% 70%, rgba(226, 199, 176, .18), transparent 28%),
+        var(--cream);
+
       color: var(--text);
       line-height: 1.8;
       overflow-x: hidden;
@@ -69,87 +57,118 @@
       color: inherit;
     }
 
+    button {
+      font-family: inherit;
+    }
 
     /* =========================
-       الزهور في الخلفية
-    ========================= */
+       الزهور الثابتة
+    ========================== */
 
-    body::before,
-    body::after {
+    .floral {
       position: fixed;
-      z-index: -1;
-      opacity: 0.35;
-      font-size: 120px;
+      width: 170px;
+      height: 520px;
+      top: 100px;
+      z-index: 0;
       pointer-events: none;
+      opacity: .55;
     }
 
-    body::before {
-      content: "🌸";
-      left: -25px;
-      top: 120px;
+    .floral-left {
+      left: -35px;
     }
 
-    body::after {
-      content: "🌷";
-      right: -20px;
-      bottom: 80px;
+    .floral-right {
+      right: -35px;
+      transform: scaleX(-1);
     }
 
+    .floral svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .stem {
+      fill: none;
+      stroke: #c7a68e;
+      stroke-width: 2;
+      stroke-linecap: round;
+      opacity: .75;
+    }
+
+    .leaf {
+      fill: #d8bca5;
+      opacity: .65;
+    }
+
+    .petal {
+      fill: #e5cabb;
+      opacity: .8;
+    }
+
+    .flower-center {
+      fill: #b99477;
+      opacity: .7;
+    }
 
     /* =========================
-       HEADER
-    ========================= */
+       الهيدر
+    ========================== */
 
     header {
-      background: #a77e5f;
-      color: white;
-      padding: 12px 5%;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-
-      box-shadow:
-        0 4px 18px rgba(90, 60, 40, 0.12);
+      position: relative;
+      z-index: 10;
+      background: rgba(255, 250, 244, .93);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(169, 130, 100, .12);
     }
 
-    .header-inner {
-      max-width: 1250px;
+    .nav-container {
+      width: min(1180px, calc(100% - 40px));
       margin: auto;
+
+      min-height: 82px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-      gap: 25px;
+      gap: 30px;
     }
-
-
-    /* الشعار */
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
-
-      font-size: 20px;
-      font-weight: 800;
-
-      white-space: nowrap;
+      gap: 12px;
     }
 
     .logo-icon {
-      font-size: 30px;
+      width: 48px;
+      height: 48px;
+
+      border-radius: 16px;
+
+      background: var(--beige);
+
+      display: grid;
+      place-items: center;
+
+      color: var(--brown-dark);
+      font-size: 23px;
     }
 
-    .logo small {
+    .logo-text h1 {
+      font-size: 18px;
+      color: var(--brown-dark);
+      font-weight: 800;
+    }
+
+    .logo-text span {
       display: block;
-      font-size: 10px;
-      font-weight: 400;
-      opacity: 0.9;
+      color: var(--text-light);
+      font-size: 11px;
+      margin-top: -3px;
     }
-
-
-    /* القائمة */
 
     nav {
       display: flex;
@@ -158,803 +177,893 @@
     }
 
     nav a {
-      padding: 8px 17px;
+      padding: 10px 17px;
+      border-radius: 14px;
 
-      border-radius: 25px;
-
-      color: white;
       font-size: 14px;
+      font-weight: 600;
 
-      transition: 0.3s;
+      color: var(--text-light);
+
+      transition: .25s ease;
     }
 
-    nav a:hover {
-      background: rgba(255,255,255,0.16);
+    nav a:hover,
+    nav a.active {
+      background: var(--beige);
+      color: var(--brown-dark);
     }
 
-    nav .active {
-      background: #f5dfc2;
-      color: #76543f;
+    /* =========================
+       المحتوى العام
+    ========================== */
+
+    main {
+      position: relative;
+      z-index: 2;
     }
 
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    section {
+      padding: 80px 0;
+    }
 
     /* =========================
        HERO
-    ========================= */
+    ========================== */
 
     .hero {
-      min-height: 320px;
-
-      position: relative;
-      overflow: hidden;
-
-      background:
-        radial-gradient(
-          circle at 20% 50%,
-          rgba(232,199,164,0.45),
-          transparent 30%
-        ),
-        linear-gradient(
-          110deg,
-          #f7eadb,
-          #fffaf3,
-          #f6e8d8
-        );
-    }
-
-    .hero-inner {
-      max-width: 1250px;
-      min-height: 320px;
-
-      margin: auto;
+      min-height: 620px;
 
       display: grid;
-      grid-template-columns: 1fr 1.2fr 0.9fr;
-
+      grid-template-columns: 1.05fr .95fr;
       align-items: center;
-
-      gap: 25px;
-
-      padding: 35px 30px;
+      gap: 50px;
     }
 
+    .hero-content {
+      padding: 20px;
+    }
 
-    /* صورة ديكورية */
-
-    .hero-decoration {
-      height: 260px;
-
-      border-radius: 45% 55% 40% 60%;
-
-      background:
-        linear-gradient(
-          135deg,
-          #ead0b4,
-          #f7e7d3
-        );
-
-      position: relative;
-
-      display: flex;
+    .small-title {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
+      gap: 8px;
 
-      font-size: 90px;
+      background: var(--beige);
+      color: var(--brown);
 
-      box-shadow:
-        inset 0 0 50px rgba(255,255,255,0.5);
-    }
+      padding: 8px 15px;
+      border-radius: 50px;
 
-    .hero-decoration::after {
-      content: "📚  💻  🌷";
-
-      position: absolute;
-
-      bottom: 15px;
-      left: 20px;
-
-      font-size: 28px;
-
-      letter-spacing: 5px;
-    }
-
-
-    /* النص */
-
-    .hero-text {
-      text-align: center;
-    }
-
-    .hero-text h1 {
-      font-size: clamp(30px, 4vw, 48px);
-
-      color: #79573f;
-
-      line-height: 1.35;
-
-      margin-bottom: 10px;
-    }
-
-    .hero-text h1 span {
-      color: #bc8664;
-    }
-
-    .hero-text p {
-      color: #725f51;
-
-      font-size: 15px;
-
-      max-width: 560px;
-
-      margin: 0 auto 20px;
-    }
-
-    .main-button {
-      display: inline-block;
-
-      background: #a57453;
-      color: white;
-
-      padding: 10px 32px;
-
-      border-radius: 30px;
-
+      font-size: 13px;
       font-weight: 700;
 
-      box-shadow:
-        0 7px 18px rgba(128,96,77,0.20);
-
-      transition: 0.3s;
+      margin-bottom: 20px;
     }
 
-    .main-button:hover {
+    .small-title::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--brown-light);
+    }
+
+    .hero h2 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.35;
+
+      color: var(--brown-dark);
+
+      font-weight: 800;
+
+      margin-bottom: 20px;
+    }
+
+    .hero h2 span {
+      color: var(--brown);
+    }
+
+    .hero p {
+      color: var(--text-light);
+      font-size: 17px;
+      max-width: 590px;
+
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+
+      padding: 13px 25px;
+
+      border-radius: 16px;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      transition: .25s ease;
+    }
+
+    .btn-primary {
+      background: var(--brown);
+      color: white;
+      box-shadow: 0 8px 22px rgba(169, 130, 100, .25);
+    }
+
+    .btn-primary:hover {
       transform: translateY(-3px);
-      background: #8d6248;
+      background: var(--brown-dark);
     }
 
+    .btn-secondary {
+      background: var(--white);
+      color: var(--brown-dark);
 
-    /* بطاقة الرحلة */
+      border: 1px solid var(--beige-2);
+    }
 
-    .journey {
-      background: rgba(255,253,249,0.82);
-
-      border: 1px solid var(--border);
-
-      border-radius: 18px;
-
-      padding: 20px;
-
+    .btn-secondary:hover {
+      transform: translateY(-3px);
       box-shadow: var(--shadow);
     }
 
-    .journey h3 {
-      color: #79573f;
+    /* =========================
+       الرسم التوضيحي
+    ========================== */
 
-      margin-bottom: 12px;
+    .hero-art {
+      min-height: 430px;
 
-      font-size: 18px;
+      display: grid;
+      place-items: center;
+
+      position: relative;
     }
 
-    .journey-item {
-      display: flex;
-      align-items: center;
-
-      gap: 10px;
-
-      padding: 10px 0;
-
-      border-bottom: 1px solid #eee2d5;
-
-      font-size: 13px;
-    }
-
-    .journey-item:last-child {
-      border-bottom: none;
-    }
-
-    .journey-number {
-      width: 30px;
-      height: 30px;
-
-      flex-shrink: 0;
-
-      background: #ecd7c0;
-
-      color: #805d45;
+    .art-circle {
+      width: min(430px, 90%);
+      aspect-ratio: 1;
 
       border-radius: 50%;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background:
+        radial-gradient(circle at 50% 45%, #fffdf9 0 32%, transparent 33%),
+        var(--beige);
 
-      font-weight: 800;
+      position: relative;
     }
 
+    .desk {
+      position: absolute;
+
+      width: 260px;
+      height: 130px;
+
+      left: 50%;
+      top: 54%;
+
+      transform: translate(-50%, -50%);
+
+      background: #c59f82;
+
+      border-radius: 22px 22px 14px 14px;
+
+      box-shadow: 0 18px 30px rgba(105, 77, 57, .12);
+    }
+
+    .desk::after {
+      content: "";
+
+      position: absolute;
+
+      width: 185px;
+      height: 14px;
+
+      background: #a98264;
+
+      left: 38px;
+      bottom: -60px;
+
+      border-radius: 0 0 12px 12px;
+    }
+
+    .laptop {
+      position: absolute;
+
+      width: 150px;
+      height: 95px;
+
+      left: 55px;
+      top: -65px;
+
+      background: #fffaf4;
+
+      border: 8px solid #9d765b;
+
+      border-radius: 12px;
+    }
+
+    .laptop::after {
+      content: "نورهان";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      top: 32px;
+
+      text-align: center;
+
+      color: #b58f72;
+
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .book {
+      position: absolute;
+
+      width: 85px;
+      height: 18px;
+
+      right: 18px;
+      top: 30px;
+
+      border-radius: 5px;
+
+      background: #dfc4ae;
+
+      transform: rotate(-5deg);
+    }
+
+    .book.two {
+      top: 52px;
+      right: 8px;
+
+      background: #c7a487;
+
+      transform: rotate(4deg);
+    }
+
+    .plant {
+      position: absolute;
+
+      width: 70px;
+      height: 95px;
+
+      left: 22px;
+      top: -65px;
+    }
+
+    .plant-pot {
+      position: absolute;
+
+      bottom: 0;
+      left: 20px;
+
+      width: 40px;
+      height: 35px;
+
+      background: #b98e70;
+
+      border-radius: 5px 5px 14px 14px;
+    }
+
+    .leaf-shape {
+      position: absolute;
+
+      width: 28px;
+      height: 42px;
+
+      background: #c5a58e;
+
+      border-radius: 100% 0 100% 0;
+
+      transform-origin: bottom center;
+    }
+
+    .leaf-one {
+      left: 30px;
+      bottom: 28px;
+      transform: rotate(-28deg);
+    }
+
+    .leaf-two {
+      left: 10px;
+      bottom: 35px;
+      transform: rotate(-60deg);
+    }
+
+    .leaf-three {
+      left: 40px;
+      bottom: 47px;
+      transform: rotate(22deg);
+    }
 
     /* =========================
-       إنشاء الفيديو
-    ========================= */
+       بطاقات الخطوات
+    ========================== */
 
-    .create-area {
-      max-width: 1250px;
+    .journey {
+      background: rgba(255,255,255,.7);
 
-      margin: 25px auto;
+      border: 1px solid rgba(169,130,100,.13);
 
-      padding: 0 25px;
-    }
+      border-radius: 30px;
 
-    .create-card {
-      background: var(--white);
-
-      border: 1px solid var(--border);
-
-      border-radius: 20px;
-
-      padding: 25px;
+      padding: 35px;
 
       box-shadow: var(--shadow);
     }
 
     .section-heading {
-      text-align: right;
-
-      margin-bottom: 20px;
-    }
-
-    .section-heading h2 {
-      color: #79573f;
-
-      font-size: 22px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-
-      font-size: 13px;
-    }
-
-
-    .create-grid {
-      display: grid;
-
-      grid-template-columns: 0.9fr 1.5fr 0.65fr;
-
-      gap: 20px;
-
-      align-items: stretch;
-    }
-
-
-    /* رفع الملف */
-
-    .upload-box {
-      border: 2px dashed #d5b99d;
-
-      background: #fcf8f2;
-
-      border-radius: 15px;
-
-      min-height: 220px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: center;
-
-      align-items: center;
-
       text-align: center;
-
-      padding: 20px;
+      margin-bottom: 40px;
     }
 
-    .upload-icon {
-      font-size: 42px;
-
-      margin-bottom: 8px;
-    }
-
-    .upload-box h3 {
-      color: #79573f;
-
-      font-size: 16px;
-    }
-
-    .upload-box p {
-      color: var(--muted);
-
-      font-size: 12px;
-
-      margin-bottom: 12px;
-    }
-
-    .upload-button {
-      background: #a57453;
-
-      color: white;
-
-      border-radius: 25px;
-
-      padding: 9px 24px;
-
-      cursor: pointer;
-
+    .section-heading small {
+      color: var(--brown);
+      font-weight: 700;
       font-size: 13px;
     }
 
-    #fileName {
-      color: #9a7053;
-
-      font-size: 11px;
-
-      margin-top: 8px;
-    }
-
-
-    /* الفورم */
-
-    .form-grid {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 12px;
-    }
-
-    .form-group label {
-      display: block;
-
-      font-size: 12px;
-
-      color: #765642;
-
-      font-weight: 700;
-
-      margin-bottom: 5px;
-    }
-
-    select,
-    textarea {
-      width: 100%;
-
-      border: 1px solid #e7d9ca;
-
-      background: #fffdf9;
-
-      border-radius: 10px;
-
-      padding: 9px;
-
-      font-family: inherit;
-
-      color: #675548;
-
-      outline: none;
-    }
-
-    textarea {
-      min-height: 75px;
-
-      resize: vertical;
-    }
-
-    .full {
-      grid-column: 1 / -1;
-    }
-
-
-    .buttons-row {
-      display: flex;
-
-      gap: 8px;
-
+    .section-heading h3 {
+      color: var(--brown-dark);
+      font-size: 30px;
       margin-top: 5px;
     }
 
-    .button {
-      border: none;
+    .section-heading p {
+      color: var(--text-light);
+      font-size: 14px;
+      margin-top: 7px;
+    }
 
-      font-family: inherit;
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
 
-      cursor: pointer;
-
-      padding: 9px 18px;
+    .step {
+      background: var(--cream-2);
 
       border-radius: 22px;
 
-      font-weight: 700;
+      padding: 25px;
+
+      text-align: center;
+
+      transition: .25s ease;
     }
 
-    .button-primary {
-      background: #a57453;
-      color: white;
+    .step:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
     }
 
-    .button-secondary {
-      background: #f0dfcd;
-      color: #79573f;
-    }
+    .step-number {
+      width: 48px;
+      height: 48px;
 
-
-    /* مدة الفيديو */
-
-    .duration {
-      background: #f8eee2;
+      margin: auto auto 14px;
 
       border-radius: 15px;
 
-      padding: 20px;
+      background: var(--white);
 
-      text-align: center;
+      display: grid;
+      place-items: center;
 
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: center;
+      color: var(--brown);
+      font-weight: 800;
     }
 
-    .duration-icon {
-      font-size: 30px;
+    .step h4 {
+      color: var(--brown-dark);
+      margin-bottom: 5px;
+      font-size: 16px;
     }
 
-    .duration h3 {
-      color: #79573f;
-
-      font-size: 17px;
-
-      margin: 5px 0;
-    }
-
-    .duration strong {
-      background: white;
-
-      border: 1px solid #e8d5c0;
-
-      padding: 4px 14px;
-
-      border-radius: 20px;
-
-      color: #a57453;
-
+    .step p {
+      color: var(--text-light);
       font-size: 12px;
-
-      margin: auto;
     }
-
-    .duration p {
-      font-size: 11px;
-
-      color: var(--muted);
-
-      margin-top: 10px;
-    }
-
 
     /* =========================
        مكتبة الطلاب
-    ========================= */
+    ========================== */
 
-    .library {
-      max-width: 1250px;
-
-      margin: 45px auto;
-
-      padding: 0 25px;
+    #lessons {
+      scroll-margin-top: 30px;
     }
-
-    .library-title {
-      text-align: center;
-
-      margin-bottom: 25px;
-    }
-
-    .library-title h2 {
-      color: #79573f;
-
-      font-size: 28px;
-    }
-
-    .library-title p {
-      color: var(--muted);
-
-      font-size: 13px;
-    }
-
-
-    .subjects {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 20px;
-    }
-
-
-    /* المادة */
 
     .subject {
-      background: rgba(255,253,249,0.95);
+      background: rgba(255,255,255,.78);
 
-      border: 1px solid var(--border);
+      border: 1px solid rgba(169,130,100,.12);
 
-      border-radius: 20px;
+      border-radius: 28px;
 
-      padding: 20px;
+      padding: 30px;
 
-      box-shadow:
-        0 7px 25px rgba(128,96,77,0.07);
+      margin-bottom: 25px;
 
-      transition: 0.3s;
-    }
-
-    .subject:hover {
-      transform: translateY(-4px);
+      box-shadow: var(--shadow);
     }
 
     .subject-header {
       display: flex;
-
       align-items: center;
+      gap: 15px;
 
-      justify-content: center;
-
-      gap: 10px;
-
-      color: #79573f;
-
-      margin-bottom: 15px;
+      margin-bottom: 25px;
     }
 
-    .subject-header .icon {
-      font-size: 28px;
+    .subject-icon {
+      width: 55px;
+      height: 55px;
+
+      border-radius: 18px;
+
+      background: var(--beige);
+
+      display: grid;
+      place-items: center;
+
+      font-size: 24px;
     }
 
-    .subject-header h3 {
-      font-size: 20px;
+    .subject-header h4 {
+      font-size: 21px;
+      color: var(--brown-dark);
     }
 
-
-    /* الصفوف */
+    .subject-header p {
+      font-size: 12px;
+      color: var(--text-light);
+    }
 
     .grades {
       display: grid;
 
-      grid-template-columns:
-        repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
 
-      gap: 10px;
+      gap: 14px;
     }
 
     .grade {
-      background: #f8eee3;
+      background: var(--cream);
 
-      border: 1px solid #eadaca;
+      border: 1px solid var(--beige);
 
-      border-radius: 12px;
+      border-radius: 18px;
 
-      padding: 12px 7px;
+      padding: 17px;
 
-      text-align: center;
-
-      font-size: 12px;
-
-      color: #765743;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
       cursor: pointer;
 
-      transition: 0.3s;
+      transition: .25s ease;
     }
 
     .grade:hover {
-      background: #ead4bc;
-
-      color: #654633;
-
-      transform: scale(1.02);
-    }
-
-    .grade-icon {
-      display: block;
-
-      font-size: 20px;
-
-      margin-bottom: 3px;
-    }
-
-
-    /* =========================
-       تواصل معنا
-    ========================= */
-
-    .contact-button {
-      position: fixed;
-
-      bottom: 22px;
-      left: 22px;
-
-      z-index: 999;
-
-      background: #a57453;
-
-      color: white;
-
-      padding: 11px 20px;
-
-      border-radius: 30px;
-
-      box-shadow:
-        0 8px 25px rgba(90,60,40,0.25);
-
-      font-size: 13px;
-
-      font-weight: 700;
-
-      transition: 0.3s;
-    }
-
-    .contact-button:hover {
+      background: var(--beige);
       transform: translateY(-3px);
-
-      background: #8e6348;
+      box-shadow: var(--shadow);
     }
 
+    .grade strong {
+      color: var(--brown-dark);
+      font-size: 14px;
+    }
+
+    .grade span {
+      width: 30px;
+      height: 30px;
+
+      border-radius: 10px;
+
+      background: var(--white);
+
+      display: grid;
+      place-items: center;
+
+      color: var(--brown);
+    }
 
     /* =========================
-       FOOTER
-    ========================= */
+       التواصل
+    ========================== */
 
-    footer {
-      background: #a77e5f;
+    .contact-box {
+      background:
+        linear-gradient(135deg, #f1e2d3, #fffaf4);
 
-      color: white;
+      border-radius: 32px;
+
+      padding: 45px;
 
       text-align: center;
 
-      padding: 22px;
+      border: 1px solid var(--beige-2);
+    }
+
+    .contact-box h3 {
+      color: var(--brown-dark);
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      color: var(--text-light);
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    /* =========================
+       زر التواصل العائم
+    ========================== */
+
+    .floating-contact {
+      position: fixed;
+
+      left: 22px;
+      bottom: 22px;
+
+      width: 55px;
+      height: 55px;
+
+      border-radius: 50%;
+
+      background: var(--brown);
+
+      color: white;
+
+      display: grid;
+      place-items: center;
+
+      font-size: 22px;
+
+      box-shadow: 0 10px 25px rgba(118,91,72,.25);
+
+      z-index: 20;
+
+      transition: .25s ease;
+    }
+
+    .floating-contact:hover {
+      transform: translateY(-4px) scale(1.04);
+      background: var(--brown-dark);
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      background: #f1e5da;
 
       margin-top: 40px;
+
+      padding: 28px 20px;
+
+      text-align: center;
+
+      color: var(--text-light);
+
+      font-size: 12px;
     }
 
     footer strong {
-      font-size: 17px;
+      color: var(--brown-dark);
     }
-
-    footer p {
-      font-size: 12px;
-
-      opacity: 0.9;
-    }
-
 
     /* =========================
-       RESPONSIVE
-    ========================= */
+       الموبايل
+    ========================== */
 
-    @media (max-width: 1000px) {
+    @media (max-width: 850px) {
 
-      .hero-inner {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero-decoration {
-        display: none;
-      }
-
-      .create-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .duration {
-        min-height: 150px;
-      }
-
-      .subjects {
-        grid-template-columns: 1fr;
-      }
-    }
-
-
-    @media (max-width: 700px) {
-
-      .header-inner {
+      .nav-container {
         flex-direction: column;
+        padding: 15px 0;
+        gap: 12px;
       }
 
       nav {
+        width: 100%;
+        justify-content: center;
         flex-wrap: wrap;
+      }
 
+      nav a {
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+
+        padding-top: 35px;
+      }
+
+      .hero-content {
+        padding: 0;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
         justify-content: center;
       }
 
-      .hero-inner {
+      .hero-art {
+        min-height: 340px;
+      }
+
+      .steps {
         grid-template-columns: 1fr;
-      }
-
-      .journey {
-        display: none;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .full {
-        grid-column: auto;
       }
 
       .grades {
         grid-template-columns: 1fr 1fr;
       }
-    }
 
-
-    @media (max-width: 450px) {
-
-      .logo {
-        font-size: 17px;
+      .floral {
+        width: 85px;
+        opacity: .22;
       }
 
-      nav a {
-        font-size: 12px;
-
-        padding: 7px 10px;
+      .floral-left {
+        left: -42px;
       }
 
-      .hero-text h1 {
-        font-size: 30px;
-      }
-
-      .create-card {
-        padding: 16px;
-      }
-
-      .contact-button {
-        bottom: 15px;
-        left: 15px;
+      .floral-right {
+        right: -42px;
       }
     }
 
+    @media (max-width: 520px) {
+
+      .container {
+        width: min(100% - 24px, 1180px);
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .hero h2 {
+        font-size: 34px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .art-circle {
+        width: 310px;
+      }
+
+      .desk {
+        transform: translate(-50%, -50%) scale(.8);
+      }
+
+      .journey {
+        padding: 22px 15px;
+      }
+
+      .subject {
+        padding: 20px 15px;
+      }
+
+      .grades {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        padding: 32px 20px;
+      }
+
+      .contact-box h3 {
+        font-size: 23px;
+      }
+    }
   </style>
 </head>
 
-
 <body>
 
+  <!-- =================================
+       الزهرة اليسرى
+  ================================== -->
 
-  <!-- =========================
+  <div class="floral floral-left" aria-hidden="true">
+
+    <svg viewBox="0 0 180 520">
+
+      <path class="stem"
+        d="M95 520
+           C88 430 105 350 78 280
+           C60 230 75 160 45 90" />
+
+      <path class="stem"
+        d="M79 300
+           C115 255 125 205 110 150" />
+
+      <path class="stem"
+        d="M67 245
+           C35 220 25 180 30 145" />
+
+      <ellipse class="leaf" cx="58" cy="355"
+        rx="12" ry="30"
+        transform="rotate(-55 58 355)" />
+
+      <ellipse class="leaf" cx="99" cy="325"
+        rx="11" ry="28"
+        transform="rotate(45 99 325)" />
+
+      <ellipse class="leaf" cx="67" cy="245"
+        rx="11" ry="27"
+        transform="rotate(-70 67 245)" />
+
+      <ellipse class="leaf" cx="105" cy="200"
+        rx="10" ry="25"
+        transform="rotate(48 105 200)" />
+
+      <!-- زهرة -->
+
+      <g transform="translate(45 88)">
+        <ellipse class="petal" cx="0" cy="-14" rx="12" ry="20"/>
+        <ellipse class="petal" cx="14" cy="0" rx="20" ry="12"/>
+        <ellipse class="petal" cx="0" cy="14" rx="12" ry="20"/>
+        <ellipse class="petal" cx="-14" cy="0" rx="20" ry="12"/>
+        <circle class="flower-center" cx="0" cy="0" r="7"/>
+      </g>
+
+      <g transform="translate(110 148)">
+        <ellipse class="petal" cx="0" cy="-12" rx="10" ry="17"/>
+        <ellipse class="petal" cx="13" cy="0" rx="17" ry="10"/>
+        <ellipse class="petal" cx="0" cy="13" rx="10" ry="17"/>
+        <ellipse class="petal" cx="-13" cy="0" rx="17" ry="10"/>
+        <circle class="flower-center" cx="0" cy="0" r="6"/>
+      </g>
+
+      <g transform="translate(28 145)">
+        <ellipse class="petal" cx="0" cy="-10" rx="9" ry="15"/>
+        <ellipse class="petal" cx="11" cy="0" rx="15" ry="9"/>
+        <ellipse class="petal" cx="0" cy="10" rx="9" ry="15"/>
+        <ellipse class="petal" cx="-11" cy="0" rx="15" ry="9"/>
+        <circle class="flower-center" cx="0" cy="0" r="5"/>
+      </g>
+
+    </svg>
+
+  </div>
+
+
+  <!-- =================================
+       الزهرة اليمنى
+  ================================== -->
+
+  <div class="floral floral-right" aria-hidden="true">
+
+    <svg viewBox="0 0 180 520">
+
+      <path class="stem"
+        d="M95 520
+           C88 430 105 350 78 280
+           C60 230 75 160 45 90" />
+
+      <path class="stem"
+        d="M79 300
+           C115 255 125 205 110 150" />
+
+      <path class="stem"
+        d="M67 245
+           C35 220 25 180 30 145" />
+
+      <ellipse class="leaf" cx="58" cy="355"
+        rx="12" ry="30"
+        transform="rotate(-55 58 355)" />
+
+      <ellipse class="leaf" cx="99" cy="325"
+        rx="11" ry="28"
+        transform="rotate(45 99 325)" />
+
+      <ellipse class="leaf" cx="67" cy="245"
+        rx="11" ry="27"
+        transform="rotate(-70 67 245)" />
+
+      <ellipse class="leaf" cx="105" cy="200"
+        rx="10" ry="25"
+        transform="rotate(48 105 200)" />
+
+      <g transform="translate(45 88)">
+        <ellipse class="petal" cx="0" cy="-14" rx="12" ry="20"/>
+        <ellipse class="petal" cx="14" cy="0" rx="20" ry="12"/>
+        <ellipse class="petal" cx="0" cy="14" rx="12" ry="20"/>
+        <ellipse class="petal" cx="-14" cy="0" rx="20" ry="12"/>
+        <circle class="flower-center" cx="0" cy="0" r="7"/>
+      </g>
+
+      <g transform="translate(110 148)">
+        <ellipse class="petal" cx="0" cy="-12" rx="10" ry="17"/>
+        <ellipse class="petal" cx="13" cy="0" rx="17" ry="10"/>
+        <ellipse class="petal" cx="0" cy="13" rx="10" ry="17"/>
+        <ellipse class="petal" cx="-13" cy="0" rx="17" ry="10"/>
+        <circle class="flower-center" cx="0" cy="0" r="6"/>
+      </g>
+
+      <g transform="translate(28 145)">
+        <ellipse class="petal" cx="0" cy="-10" rx="9" ry="15"/>
+        <ellipse class="petal" cx="11" cy="0" rx="15" ry="9"/>
+        <ellipse class="petal" cx="0" cy="10" rx="9" ry="15"/>
+        <ellipse class="petal" cx="-11" cy="0" rx="15" ry="9"/>
+        <circle class="flower-center" cx="0" cy="0" r="5"/>
+      </g>
+
+    </svg>
+
+  </div>
+
+
+  <!-- =================================
        HEADER
-  ========================= -->
+  ================================== -->
 
   <header>
 
-    <div class="header-inner">
+    <div class="nav-container">
 
       <a href="#" class="logo">
 
-        <span class="logo-icon">🎓</span>
+        <div class="logo-icon">
+          ✦
+        </div>
 
-        <span>
-          منصة نورهان التعليمية
-          <small>معًا نحو مستقبل أفضل</small>
-        </span>
+        <div class="logo-text">
+          <h1>منصة نورهان التعليمية</h1>
+          <span>معًا نحو مستقبل أفضل</span>
+        </div>
 
       </a>
 
 
       <nav>
 
-        <a href="#" class="active">🏠 الرئيسية</a>
+        <a href="#" class="active">
+          الرئيسية
+        </a>
 
-        <a href="#create">👩‍🏫 للمعلمة</a>
+        <a href="#lessons">
+          الدروس
+        </a>
 
-        <a href="#students">👨‍🎓 للطلاب</a>
-
-        <!-- رابط التواصل -->
-        <a href="#contact">✉️ تواصل معنا</a>
+        <a href="#contact">
+          تواصل معنا
+        </a>
 
       </nav>
 
@@ -963,530 +1072,399 @@
   </header>
 
 
+  <main>
 
-  <!-- =========================
-       HERO
-  ========================= -->
+    <!-- =================================
+         HERO
+    ================================== -->
 
-  <section class="hero">
+    <section>
 
-    <div class="hero-inner">
+      <div class="container hero">
 
+        <div class="hero-content">
 
-      <div class="hero-decoration">
-        🌷
-      </div>
-
-
-      <div class="hero-text">
-
-        <h1>
-          اصنعي شرحك التعليمي
-          <br>
-          <span>بأسلوب مختلف</span>
-        </h1>
-
-        <p>
-          حوّلي دروسك وملفاتك التعليمية إلى شرح واضح ومفصل،
-          يساعد الطلاب على الفهم والمراجعة بطريقة حديثة وسهلة.
-        </p>
-
-        <a href="#create" class="main-button">
-          ابدئي الآن ←
-        </a>
-
-      </div>
-
-
-      <div class="journey">
-
-        <h3>
-          رحلتك التعليمية معنا
-        </h3>
-
-        <div class="journey-item">
-
-          <span class="journey-number">1</span>
-
-          تحويل الملف إلى شرح مفصل
-
-        </div>
-
-        <div class="journey-item">
-
-          <span class="journey-number">2</span>
-
-          إنشاء فيديو تعليمي احترافي
-
-        </div>
-
-        <div class="journey-item">
-
-          <span class="journey-number">3</span>
-
-          مكتبة دروس للطلاب
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =========================
-       CREATE VIDEO
-  ========================= -->
-
-  <section id="create" class="create-area">
-
-    <div class="create-card">
-
-      <div class="section-heading">
-
-        <h2>
-          💡 إنشاء فيديو تعليمي جديد
-        </h2>
-
-        <p>
-          ابدئي برفع ملف الدرس وسنساعدك في تحويله إلى شرح تعليمي متكامل.
-        </p>
-
-      </div>
-
-
-      <div class="create-grid">
-
-
-        <!-- رفع الملف -->
-
-        <div class="upload-box">
-
-          <div class="upload-icon">
-            ☁️
+          <div class="small-title">
+            منصتك التعليمية
           </div>
 
-          <h3>
-            ارفعي ملف الدرس هنا
-          </h3>
+          <h2>
+            تعلّمي
+            <span>بأسلوب مختلف</span>
+            وابدئي رحلتك نحو النجاح
+          </h2>
 
           <p>
-            PDF أو Word
+            هنا هتلاقي دروسك التعليمية بطريقة بسيطة،
+            منظمة وممتعة، تساعدك تفهمي المعلومة
+            بدل ما تحفظيها فقط.
           </p>
 
-          <label class="upload-button">
-
-            اختيار ملف
-
-            <input
-              type="file"
-              id="lessonFile"
-              accept=".pdf,.doc,.docx"
-              hidden
-            >
-
-          </label>
-
-          <div id="fileName"></div>
-
-        </div>
-
-
-
-        <!-- البيانات -->
-
-        <div>
-
-          <div class="form-grid">
-
-
-            <div class="form-group">
-
-              <label>
-                🏫 المرحلة التعليمية
-              </label>
-
-              <select>
-
-                <option>اختاري المرحلة</option>
-
-                <option>الصف الرابع الابتدائي</option>
-
-                <option>الصف الخامس الابتدائي</option>
-
-                <option>الصف السادس الابتدائي</option>
-
-                <option>الصف الأول الإعدادي</option>
-
-                <option>الصف الثاني الإعدادي</option>
-
-                <option>الصف الثالث الإعدادي</option>
-
-                <option>الصف الأول الثانوي</option>
-
-                <option>الصف الثاني الثانوي</option>
-
-                <option>الصف الثالث الثانوي</option>
-
-              </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label>
-                📖 المادة
-              </label>
-
-              <select>
-
-                <option>اختاري المادة</option>
-
-                <option>الدراسات الاجتماعية</option>
-
-                <option>التاريخ</option>
-
-                <option>الجغرافيا</option>
-
-              </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label>
-                💡 أسلوب الشرح
-              </label>
-
-              <select>
-
-                <option>شرح تفصيلي وقصصي</option>
-
-                <option>شرح مبسط</option>
-
-                <option>شرح أكاديمي</option>
-
-                <option>شرح قصصي</option>
-
-              </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label>
-                🎙️ صوت الشرح
-              </label>
-
-              <select>
-
-                <option>اختاري الصوت</option>
-
-                <option>صوت نسائي</option>
-
-                <option>صوت رجالي</option>
-
-              </select>
-
-            </div>
-
-
-            <div class="form-group full">
-
-              <label>
-                📝 تعليماتك الخاصة
-              </label>
-
-              <textarea
-                placeholder="اكتبي أي تعليمات خاصة تريدينها في شرح الدرس..."
-              ></textarea>
-
-            </div>
-
-          </div>
-
-
-          <div class="buttons-row">
-
-            <button class="button button-primary">
-              🧠 تحليل الدرس
-            </button>
-
-            <button class="button button-secondary">
-              ✏️ تجهيز السيناريو للتعديل
-            </button>
+          <div class="hero-buttons">
+
+            <a href="#lessons" class="btn btn-primary">
+              ابدئي التعلم
+            </a>
+
+            <a href="#contact" class="btn btn-secondary">
+              تواصلي معنا
+            </a>
 
           </div>
 
         </div>
 
 
+        <!-- الرسم -->
 
-        <!-- المدة -->
+        <div class="hero-art">
 
-        <div class="duration">
+          <div class="art-circle">
 
-          <div class="duration-icon">
-            ⏱️
+            <div class="desk">
+
+              <div class="laptop"></div>
+
+              <div class="book"></div>
+              <div class="book two"></div>
+
+              <div class="plant">
+
+                <div class="leaf-shape leaf-one"></div>
+                <div class="leaf-shape leaf-two"></div>
+                <div class="leaf-shape leaf-three"></div>
+
+                <div class="plant-pot"></div>
+
+              </div>
+
+            </div>
+
           </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         رحلتك
+    ================================== -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <small>رحلتك التعليمية</small>
 
           <h3>
-            مدة الفيديو
+            التعلم أصبح أسهل
           </h3>
 
-          <strong>
-            مفتوحة
-          </strong>
-
           <p>
-            يستمر الشرح حتى يتم تناول محتوى الدرس بالكامل بالتفصيل.
+            ثلاث خطوات بسيطة توصلك للمعلومة
           </p>
 
         </div>
 
 
+        <div class="journey">
+
+          <div class="steps">
+
+            <div class="step">
+
+              <div class="step-number">
+                01
+              </div>
+
+              <h4>
+                اختاري المادة
+              </h4>
+
+              <p>
+                اختاري المادة والصف الدراسي
+                الذي تريدين التعلم فيه.
+              </p>
+
+            </div>
+
+
+            <div class="step">
+
+              <div class="step-number">
+                02
+              </div>
+
+              <h4>
+                اختاري الدرس
+              </h4>
+
+              <p>
+                تصفحي الدروس المتاحة
+                واختاري الدرس المطلوب.
+              </p>
+
+            </div>
+
+
+            <div class="step">
+
+              <div class="step-number">
+                03
+              </div>
+
+              <h4>
+                ابدئي التعلم
+              </h4>
+
+              <p>
+                شاهدي الشرح وتعلمي
+                بطريقة بسيطة ومنظمة.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
 
-    </div>
-
-  </section>
+    </section>
 
 
+    <!-- =================================
+         مكتبة الدروس
+    ================================== -->
 
-  <!-- =========================
-       STUDENT LIBRARY
-  ========================= -->
+    <section id="lessons">
 
-  <section id="students" class="library">
+      <div class="container">
 
+        <div class="section-heading">
 
-    <div class="library-title">
-
-      <h2>
-        📚 مكتبة دروس الطلاب
-      </h2>
-
-      <p>
-        اختار المادة ثم الصف لمشاهدة الدروس المتاحة
-      </p>
-
-    </div>
-
-
-
-    <div class="subjects">
-
-
-      <!-- =================
-           الدراسات
-      ================= -->
-
-      <div class="subject">
-
-        <div class="subject-header">
-
-          <span class="icon">📚</span>
+          <small>مكتبة الدروس</small>
 
           <h3>
-            الدراسات الاجتماعية
+            اختاري المادة والصف
           </h3>
+
+          <p>
+            جميع الدروس ستكون منظمة حسب المادة والمرحلة الدراسية
+          </p>
 
         </div>
 
 
-        <div class="grades">
+        <!-- الدراسات الاجتماعية -->
+
+        <div class="subject">
+
+          <div class="subject-header">
+
+            <div class="subject-icon">
+              🌍
+            </div>
+
+            <div>
+              <h4>الدراسات الاجتماعية</h4>
+
+              <p>
+                المرحلة الابتدائية والإعدادية
+              </p>
+            </div>
+
+          </div>
 
 
-          <a href="#" class="grade">
+          <div class="grades">
 
-            <span class="grade-icon">🎓</span>
+            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الرابع الابتدائي')">
+              <strong>الصف الرابع الابتدائي</strong>
+              <span>←</span>
+            </a>
 
-            الصف الرابع الابتدائي
+            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الخامس الابتدائي')">
+              <strong>الصف الخامس الابتدائي</strong>
+              <span>←</span>
+            </a>
 
-          </a>
+            <a href="#" class="grade" onclick="comingSoon(event, 'الصف السادس الابتدائي')">
+              <strong>الصف السادس الابتدائي</strong>
+              <span>←</span>
+            </a>
 
+            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الأول الإعدادي')">
+              <strong>الصف الأول الإعدادي</strong>
+              <span>←</span>
+            </a>
 
-          <a href="#" class="grade">
+            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الثاني الإعدادي')">
+              <strong>الصف الثاني الإعدادي</strong>
+              <span>←</span>
+            </a>
 
-            <span class="grade-icon">🎓</span>
+            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الثالث الإعدادي')">
+              <strong>الصف الثالث الإعدادي</strong>
+              <span>←</span>
+            </a>
 
-            الصف الخامس الابتدائي
+          </div>
 
-          </a>
-
-
-          <a href="#" class="grade">
-
-            <span class="grade-icon">🎓</span>
-
-            الصف السادس الابتدائي
-
-          </a>
-
-
-          <a href="#" class="grade">
-
-            <span class="grade-icon">🎓</span>
-
-            الصف الأول الإعدادي
-
-          </a>
-
-
-          <a href="#" class="grade">
-
-            <span class="grade-icon">🎓</span>
-
-            الصف الثاني الإعدادي
-
-          </a>
+        </div>
 
 
-          <a href="#" class="grade">
+        <!-- التاريخ -->
 
-            <span class="grade-icon">🎓</span>
+        <div class="subject">
 
-            الصف الثالث الإعدادي
+          <div class="subject-header">
 
-          </a>
+            <div class="subject-icon">
+              🏺
+            </div>
+
+            <div>
+              <h4>التاريخ</h4>
+
+              <p>
+                المرحلة الثانوية
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="grades">
+
+            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الأول الثانوي - التاريخ')">
+              <strong>الصف الأول الثانوي</strong>
+              <span>←</span>
+            </a>
+
+            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الثاني الثانوي - التاريخ')">
+              <strong>الصف الثاني الثانوي</strong>
+              <span>←</span>
+            </a>
+
+            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الثالث الثانوي - التاريخ')">
+              <strong>الصف الثالث الثانوي</strong>
+              <span>←</span>
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- الجغرافيا -->
+
+        <div class="subject">
+
+          <div class="subject-header">
+
+            <div class="subject-icon">
+              🗺️
+            </div>
+
+            <div>
+              <h4>الجغرافيا</h4>
+
+              <p>
+                المرحلة الثانوية
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="grades">
+
+            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الأول الثانوي - الجغرافيا')">
+              <strong>الصف الأول الثانوي</strong>
+              <span>←</span>
+            </a>
+
+            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الثاني الثانوي - الجغرافيا')">
+              <strong>الصف الثاني الثانوي</strong>
+              <span>←</span>
+            </a>
+
+            <a href="#" class="grade" onclick="comingSoon(event, 'الصف الثالث الثانوي - الجغرافيا')">
+              <strong>الصف الثالث الثانوي</strong>
+              <span>←</span>
+            </a>
+
+          </div>
 
         </div>
 
       </div>
 
+    </section>
 
 
-      <!-- =================
-           التاريخ
-      ================= -->
+    <!-- =================================
+         التواصل
+    ================================== -->
 
-      <div class="subject">
+    <section id="contact">
 
-        <div class="subject-header">
+      <div class="container">
 
-          <span class="icon">🏛️</span>
+        <div class="contact-box">
 
           <h3>
-            التاريخ
+            محتاجة مساعدة؟
           </h3>
 
-        </div>
+          <p>
+            لو عندك أي سؤال أو استفسار، تواصلي معنا مباشرة.
+          </p>
 
+          <!--
+            مهم:
+            ضعي هنا رابط Messenger أو رسائل صفحة فيسبوك الخاصة بك.
+          -->
 
-        <div class="grades">
-
-
-          <a href="#" class="grade">
-
-            <span class="grade-icon">🎓</span>
-
-            الصف الأول الثانوي
-
-          </a>
-
-
-          <a href="#" class="grade">
-
-            <span class="grade-icon">🎓</span>
-
-            الصف الثاني الثانوي
-
-          </a>
-
-
-          <a href="#" class="grade">
-
-            <span class="grade-icon">🎓</span>
-
-            الصف الثالث الثانوي
-
+          <a
+            href="#"
+            class="btn btn-primary"
+            onclick="contactPlaceholder(event)"
+          >
+            💬 تواصلي معنا
           </a>
 
         </div>
 
       </div>
 
+    </section>
+
+  </main>
 
 
-      <!-- =================
-           الجغرافيا
-      ================= -->
-
-      <div class="subject">
-
-        <div class="subject-header">
-
-          <span class="icon">🌍</span>
-
-          <h3>
-            الجغرافيا
-          </h3>
-
-        </div>
-
-
-        <div class="grades">
-
-
-          <a href="#" class="grade">
-
-            <span class="grade-icon">🎓</span>
-
-            الصف الأول الثانوي
-
-          </a>
-
-
-          <a href="#" class="grade">
-
-            <span class="grade-icon">🎓</span>
-
-            الصف الثاني الثانوي
-
-          </a>
-
-
-          <a href="#" class="grade">
-
-            <span class="grade-icon">🎓</span>
-
-            الصف الثالث الثانوي
-
-          </a>
-
-        </div>
-
-      </div>
-
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =========================
-       CONTACT
-  ========================= -->
+  <!-- =================================
+       زر التواصل العائم
+  ================================== -->
 
   <a
-    id="contact"
-    class="contact-button"
-    href="mailto:ضع-البريد-الإلكتروني-هنا"
+    href="#contact"
+    class="floating-contact"
+    title="تواصل معنا"
   >
-    ✉️ تواصل معنا
+    💬
   </a>
 
 
-
-  <!-- =========================
+  <!-- =================================
        FOOTER
-  ========================= -->
+  ================================== -->
 
   <footer>
 
@@ -1494,48 +1472,38 @@
       منصة نورهان التعليمية
     </strong>
 
-    <p>
-      معًا نحو تعليم أفضل ومستقبل أفضل 🌷
-    </p>
+    <br>
+
+    معًا نحو مستقبل أفضل 🤎
 
   </footer>
 
 
-
-  <!-- =========================
-       JAVASCRIPT
-  ========================= -->
-
   <script>
 
-    const lessonFile =
-      document.getElementById("lessonFile");
+    function comingSoon(event, grade) {
 
-    const fileName =
-      document.getElementById("fileName");
+      event.preventDefault();
+
+      alert(
+        "📚 " + grade +
+        "\\n\\nسيتم إضافة الدروس الخاصة بهذا الصف قريبًا."
+      );
+
+    }
 
 
-    lessonFile.addEventListener(
-      "change",
-      function () {
+    function contactPlaceholder(event) {
 
-        if (this.files.length > 0) {
+      event.preventDefault();
 
-          fileName.textContent =
-            "تم اختيار: " +
-            this.files[0].name;
+      alert(
+        "💬 سيتم ربط زر التواصل بصفحة الرسائل الخاصة بك.\\n\\nأرسلي لي رابط صفحة فيسبوك الخاصة بك وسأضعه في المكان الصحيح."
+      );
 
-        } else {
-
-          fileName.textContent = "";
-
-        }
-
-      }
-    );
+    }
 
   </script>
-
 
 </body>
 </html>
