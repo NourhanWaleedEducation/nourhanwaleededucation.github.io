@@ -1,0 +1,2873 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>لوحة المعلمة | منصة نورهان التعليمية</title>
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --cream: #fffaf4;
+      --cream2: #f9f0e7;
+      --beige: #f0e1d2;
+      --beige2: #e4ccb8;
+
+      --brown-light: #c8a486;
+      --brown: #ad896d;
+      --brown-dark: #765a47;
+
+      --text: #654f40;
+      --text-light: #927c6b;
+
+      --white: #ffffff;
+
+      --green-soft: #dce9df;
+      --green: #6d9178;
+
+      --shadow: 0 12px 35px rgba(118, 90, 71, .10);
+      --shadow-hover: 0 18px 40px rgba(118, 90, 71, .17);
+    }
+
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+
+      font-family: "Cairo", sans-serif;
+
+      color: var(--text);
+
+      line-height: 1.8;
+
+      background:
+        radial-gradient(
+          circle at 8% 20%,
+          rgba(226, 201, 180, .25),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 92% 65%,
+          rgba(226, 201, 180, .18),
+          transparent 28%
+        ),
+        var(--cream);
+
+      overflow-x: hidden;
+    }
+
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+
+    button,
+    input,
+    select,
+    textarea {
+      font-family: inherit;
+    }
+
+
+    /* =====================================================
+       الزهور الثابتة في الخلفية
+    ====================================================== */
+
+    .background-flowers {
+
+      position: fixed;
+
+      top: 0;
+      bottom: 0;
+
+      width: 220px;
+
+      z-index: 0;
+
+      pointer-events: none;
+
+      opacity: .38;
+    }
+
+
+    .flowers-left {
+      left: -35px;
+    }
+
+
+    .flowers-right {
+
+      right: -35px;
+
+      transform: scaleX(-1);
+    }
+
+
+    .background-flowers svg {
+
+      width: 100%;
+      height: 100%;
+    }
+
+
+    .flower-stem {
+
+      fill: none;
+
+      stroke: #c8a68c;
+
+      stroke-width: 2.2;
+
+      stroke-linecap: round;
+
+      opacity: .75;
+    }
+
+
+    .flower-leaf {
+
+      fill: #d4b59d;
+
+      opacity: .55;
+    }
+
+
+    .flower-petal {
+
+      fill: #e3c8b8;
+
+      opacity: .74;
+    }
+
+
+    .flower-center {
+
+      fill: #b58d70;
+
+      opacity: .75;
+    }
+
+
+    /* =====================================================
+       HEADER
+    ====================================================== */
+
+    header {
+
+      position: relative;
+
+      z-index: 10;
+
+      background:
+        rgba(255,250,244,.95);
+
+      backdrop-filter: blur(12px);
+
+      border-bottom:
+        1px solid
+        rgba(169,130,100,.12);
+    }
+
+
+    .nav-container {
+
+      width:
+        min(
+          1180px,
+          calc(100% - 40px)
+        );
+
+      margin: auto;
+
+      min-height: 82px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 30px;
+    }
+
+
+    .logo {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+    }
+
+
+    .logo-icon {
+
+      width: 49px;
+      height: 49px;
+
+      border-radius: 16px;
+
+      background: var(--beige);
+
+      display: grid;
+
+      place-items: center;
+
+      color: var(--brown-dark);
+
+      font-size: 23px;
+    }
+
+
+    .logo-text h1 {
+
+      font-size: 18px;
+
+      color: var(--brown-dark);
+
+      font-weight: 800;
+    }
+
+
+    .logo-text span {
+
+      display: block;
+
+      color: var(--text-light);
+
+      font-size: 11px;
+
+      margin-top: -4px;
+    }
+
+
+    .teacher-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      background: var(--beige);
+
+      color: var(--brown-dark);
+
+      padding: 8px 14px;
+
+      border-radius: 50px;
+
+      font-size: 12px;
+
+      font-weight: 700;
+    }
+
+
+    /* =====================================================
+       المحتوى
+    ====================================================== */
+
+    main {
+
+      position: relative;
+
+      z-index: 2;
+    }
+
+
+    .container {
+
+      width:
+        min(
+          1180px,
+          calc(100% - 40px)
+        );
+
+      margin: auto;
+    }
+
+
+    section {
+      padding: 65px 0;
+    }
+
+
+    /* =====================================================
+       عنوان الصفحة
+    ====================================================== */
+
+    .page-heading {
+
+      padding-top: 60px;
+
+      text-align: center;
+    }
+
+
+    .small-title {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      background: var(--beige);
+
+      color: var(--brown);
+
+      padding: 8px 16px;
+
+      border-radius: 50px;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      margin-bottom: 18px;
+    }
+
+
+    .small-title::before {
+
+      content: "";
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--brown-light);
+    }
+
+
+    .page-heading h2 {
+
+      font-size:
+        clamp(
+          32px,
+          5vw,
+          52px
+        );
+
+      color: var(--brown-dark);
+
+      line-height: 1.4;
+
+      font-weight: 800;
+    }
+
+
+    .page-heading h2 span {
+
+      color: var(--brown);
+    }
+
+
+    .page-heading p {
+
+      max-width: 680px;
+
+      margin:
+        12px auto 0;
+
+      color: var(--text-light);
+
+      font-size: 14px;
+    }
+
+
+    /* =====================================================
+       كارت مساحة العمل
+    ====================================================== */
+
+    .workspace {
+
+      background:
+        rgba(255,255,255,.82);
+
+      border:
+        1px solid
+        rgba(169,130,100,.13);
+
+      border-radius: 32px;
+
+      padding: 35px;
+
+      box-shadow: var(--shadow);
+
+      margin-bottom: 30px;
+    }
+
+
+    .workspace-title {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+
+      margin-bottom: 30px;
+    }
+
+
+    .workspace-icon {
+
+      width: 58px;
+      height: 58px;
+
+      border-radius: 18px;
+
+      background: var(--beige);
+
+      display: grid;
+
+      place-items: center;
+
+      font-size: 25px;
+    }
+
+
+    .workspace-title h3 {
+
+      color: var(--brown-dark);
+
+      font-size: 21px;
+    }
+
+
+    .workspace-title p {
+
+      color: var(--text-light);
+
+      font-size: 12px;
+    }
+
+
+    /* =====================================================
+       رفع الملف
+    ====================================================== */
+
+    .upload-box {
+
+      border:
+        2px dashed
+        var(--beige2);
+
+      border-radius: 25px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #fffaf5,
+          #f8eee4
+        );
+
+      min-height: 220px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: center;
+
+      text-align: center;
+
+      padding: 30px;
+
+      cursor: pointer;
+
+      transition: .25s ease;
+    }
+
+
+    .upload-box:hover {
+
+      border-color: var(--brown-light);
+
+      transform: translateY(-2px);
+
+      box-shadow: var(--shadow);
+    }
+
+
+    .upload-icon {
+
+      width: 65px;
+      height: 65px;
+
+      border-radius: 20px;
+
+      background: white;
+
+      display: grid;
+
+      place-items: center;
+
+      font-size: 28px;
+
+      margin-bottom: 15px;
+
+      box-shadow:
+        0 8px 20px
+        rgba(118,90,71,.08);
+    }
+
+
+    .upload-box h4 {
+
+      color: var(--brown-dark);
+
+      font-size: 17px;
+
+      margin-bottom: 5px;
+    }
+
+
+    .upload-box p {
+
+      color: var(--text-light);
+
+      font-size: 12px;
+
+      margin-bottom: 15px;
+    }
+
+
+    .upload-button {
+
+      display: inline-block;
+
+      background: var(--brown);
+
+      color: white;
+
+      padding: 10px 20px;
+
+      border-radius: 13px;
+
+      font-size: 12px;
+
+      font-weight: 700;
+    }
+
+
+    #lessonFile {
+      display: none;
+    }
+
+
+    .selected-file {
+
+      display: none;
+
+      margin-top: 15px;
+
+      background: var(--green-soft);
+
+      color: var(--green);
+
+      border-radius: 14px;
+
+      padding: 12px 16px;
+
+      font-size: 12px;
+
+      font-weight: 700;
+    }
+
+
+    /* =====================================================
+       بيانات الدرس
+    ====================================================== */
+
+    .form-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 18px;
+
+      margin-top: 25px;
+    }
+
+
+    .form-group {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 7px;
+    }
+
+
+    .form-group.full {
+
+      grid-column: 1 / -1;
+    }
+
+
+    .form-group label {
+
+      color: var(--brown-dark);
+
+      font-size: 13px;
+
+      font-weight: 700;
+    }
+
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+
+      width: 100%;
+
+      border:
+        1px solid
+        var(--beige2);
+
+      background: #fffdf9;
+
+      color: var(--text);
+
+      border-radius: 15px;
+
+      padding: 13px 15px;
+
+      outline: none;
+
+      font-size: 13px;
+
+      transition: .2s ease;
+    }
+
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+
+      border-color: var(--brown);
+
+      box-shadow:
+        0 0 0 4px
+        rgba(173,137,109,.09);
+    }
+
+
+    .form-group textarea {
+
+      min-height: 120px;
+
+      resize: vertical;
+    }
+
+
+    /* =====================================================
+       خيارات الشرح
+    ====================================================== */
+
+    .option-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 14px;
+
+      margin-top: 25px;
+    }
+
+
+    .option {
+
+      position: relative;
+    }
+
+
+    .option input {
+
+      position: absolute;
+
+      opacity: 0;
+    }
+
+
+    .option label {
+
+      display: block;
+
+      padding: 18px;
+
+      background: var(--cream);
+
+      border:
+        1px solid
+        var(--beige);
+
+      border-radius: 18px;
+
+      cursor: pointer;
+
+      transition: .25s ease;
+    }
+
+
+    .option label strong {
+
+      display: block;
+
+      color: var(--brown-dark);
+
+      font-size: 14px;
+
+      margin-bottom: 3px;
+    }
+
+
+    .option label span {
+
+      color: var(--text-light);
+
+      font-size: 11px;
+    }
+
+
+    .option input:checked + label {
+
+      background: var(--beige);
+
+      border-color: var(--brown);
+
+      box-shadow: var(--shadow);
+    }
+
+
+    /* =====================================================
+       التعليمات الخاصة
+    ====================================================== */
+
+    .tips {
+
+      background: #fbf4ec;
+
+      border-radius: 20px;
+
+      padding: 20px;
+
+      margin-top: 25px;
+
+      border-right:
+        4px solid
+        var(--brown-light);
+    }
+
+
+    .tips h4 {
+
+      color: var(--brown-dark);
+
+      font-size: 14px;
+
+      margin-bottom: 7px;
+    }
+
+
+    .tips p {
+
+      color: var(--text-light);
+
+      font-size: 12px;
+    }
+
+
+    /* =====================================================
+       الأزرار
+    ====================================================== */
+
+    .actions {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 12px;
+
+      flex-wrap: wrap;
+
+      margin-top: 30px;
+    }
+
+
+    .btn {
+
+      border: none;
+
+      cursor: pointer;
+
+      padding: 13px 25px;
+
+      border-radius: 16px;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      transition: .25s ease;
+    }
+
+
+    .btn-primary {
+
+      background: var(--brown);
+
+      color: white;
+
+      box-shadow:
+        0 8px 22px
+        rgba(169,130,100,.25);
+    }
+
+
+    .btn-primary:hover {
+
+      transform: translateY(-3px);
+
+      background: var(--brown-dark);
+    }
+
+
+    .btn-secondary {
+
+      background: white;
+
+      color: var(--brown-dark);
+
+      border:
+        1px solid
+        var(--beige2);
+    }
+
+
+    .btn-secondary:hover {
+
+      transform: translateY(-3px);
+
+      box-shadow: var(--shadow);
+    }
+
+
+    /* =====================================================
+       حالة المعالجة
+    ====================================================== */
+
+    .status-box {
+
+      display: none;
+
+      margin-top: 25px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f4e9dc,
+          #fffaf4
+        );
+
+      border:
+        1px solid
+        var(--beige2);
+
+      border-radius: 22px;
+
+      padding: 25px;
+
+      text-align: center;
+    }
+
+
+    .loader {
+
+      width: 42px;
+      height: 42px;
+
+      border:
+        4px solid
+        #e7d8ca;
+
+      border-top-color:
+        var(--brown);
+
+      border-radius: 50%;
+
+      margin:
+        0 auto 12px;
+
+      animation:
+        spin 1s linear infinite;
+    }
+
+
+    @keyframes spin {
+
+      to {
+        transform: rotate(360deg);
+      }
+
+    }
+
+
+    .status-box h4 {
+
+      color: var(--brown-dark);
+
+      font-size: 15px;
+
+      margin-bottom: 3px;
+    }
+
+
+    .status-box p {
+
+      color: var(--text-light);
+
+      font-size: 12px;
+    }
+
+
+    /* =====================================================
+       معاينة السيناريو
+    ====================================================== */
+
+    .script-preview {
+
+      display: none;
+
+      background: white;
+
+      border:
+        1px solid
+        var(--beige2);
+
+      border-radius: 25px;
+
+      padding: 25px;
+
+      margin-top: 25px;
+    }
+
+
+    .script-preview h4 {
+
+      color: var(--brown-dark);
+
+      margin-bottom: 12px;
+
+      font-size: 16px;
+    }
+
+
+    .script-preview textarea {
+
+      width: 100%;
+
+      min-height: 300px;
+
+      border:
+        1px solid
+        var(--beige2);
+
+      border-radius: 17px;
+
+      padding: 18px;
+
+      resize: vertical;
+
+      outline: none;
+
+      color: var(--text);
+
+      background: #fffdf9;
+
+      line-height: 2;
+
+      font-size: 13px;
+    }
+
+
+    /* =====================================================
+       مكتبة المعلمة
+    ====================================================== */
+
+    .teacher-library {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+    }
+
+
+    .library-card {
+
+      background: rgba(255,255,255,.82);
+
+      border:
+        1px solid
+        rgba(169,130,100,.13);
+
+      border-radius: 22px;
+
+      padding: 22px;
+
+      box-shadow: var(--shadow);
+
+      transition: .25s ease;
+    }
+
+
+    .library-card:hover {
+
+      transform: translateY(-4px);
+
+      box-shadow: var(--shadow-hover);
+    }
+
+
+    .library-card-icon {
+
+      width: 48px;
+      height: 48px;
+
+      border-radius: 15px;
+
+      background: var(--beige);
+
+      display: grid;
+
+      place-items: center;
+
+      margin-bottom: 13px;
+    }
+
+
+    .library-card h4 {
+
+      color: var(--brown-dark);
+
+      font-size: 15px;
+
+      margin-bottom: 3px;
+    }
+
+
+    .library-card p {
+
+      color: var(--text-light);
+
+      font-size: 11px;
+    }
+
+
+    .library-status {
+
+      display: inline-block;
+
+      margin-top: 12px;
+
+      padding: 5px 10px;
+
+      border-radius: 50px;
+
+      background: #f1e5da;
+
+      color: var(--brown);
+
+      font-size: 10px;
+
+      font-weight: 700;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ====================================================== */
+
+    footer {
+
+      position: relative;
+
+      z-index: 2;
+
+      background: #f1e5da;
+
+      margin-top: 40px;
+
+      padding: 28px 20px;
+
+      text-align: center;
+
+      color: var(--text-light);
+
+      font-size: 12px;
+    }
+
+
+    footer strong {
+
+      color: var(--brown-dark);
+    }
+
+
+    /* =====================================================
+       موبايل
+    ====================================================== */
+
+    @media (max-width: 850px) {
+
+      .nav-container {
+
+        flex-direction: column;
+
+        padding: 15px 0;
+
+        gap: 12px;
+      }
+
+
+      .form-grid {
+
+        grid-template-columns: 1fr;
+      }
+
+
+      .form-group.full {
+
+        grid-column: auto;
+      }
+
+
+      .option-grid {
+
+        grid-template-columns: 1fr;
+      }
+
+
+      .teacher-library {
+
+        grid-template-columns: 1fr 1fr;
+      }
+
+
+      .background-flowers {
+
+        width: 110px;
+
+        opacity: .20;
+      }
+
+
+      .flowers-left {
+
+        left: -58px;
+      }
+
+
+      .flowers-right {
+
+        right: -58px;
+      }
+
+    }
+
+
+    @media (max-width: 550px) {
+
+      .container {
+
+        width:
+          calc(100% - 24px);
+      }
+
+
+      section {
+
+        padding: 45px 0;
+      }
+
+
+      .workspace {
+
+        padding: 20px 15px;
+      }
+
+
+      .page-heading {
+
+        padding-top: 40px;
+      }
+
+
+      .page-heading h2 {
+
+        font-size: 32px;
+      }
+
+
+      .teacher-library {
+
+        grid-template-columns: 1fr;
+      }
+
+
+      .upload-box {
+
+        min-height: 190px;
+
+        padding: 20px 12px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       الزهور الثابتة - اليسار
+  ====================================================== -->
+
+  <div
+    class="background-flowers flowers-left"
+    aria-hidden="true"
+  >
+
+    <svg viewBox="0 0 220 900">
+
+      <path
+        class="flower-stem"
+        d="M105 900
+           C95 760 125 650 85 540
+           C55 455 85 355 45 250
+           C25 195 45 110 20 30"
+      />
+
+      <path
+        class="flower-stem"
+        d="M85 555
+           C135 500 155 425 140 345"
+      />
+
+      <path
+        class="flower-stem"
+        d="M70 455
+           C25 420 15 360 25 305"
+      />
+
+      <path
+        class="flower-stem"
+        d="M100 700
+           C150 650 175 590 170 530"
+      />
+
+
+      <ellipse
+        class="flower-leaf"
+        cx="74"
+        cy="680"
+        rx="15"
+        ry="42"
+        transform="rotate(-55 74 680)"
+      />
+
+      <ellipse
+        class="flower-leaf"
+        cx="120"
+        cy="625"
+        rx="14"
+        ry="38"
+        transform="rotate(50 120 625)"
+      />
+
+      <ellipse
+        class="flower-leaf"
+        cx="70"
+        cy="455"
+        rx="14"
+        ry="40"
+        transform="rotate(-65 70 455)"
+      />
+
+      <ellipse
+        class="flower-leaf"
+        cx="126"
+        cy="395"
+        rx="13"
+        ry="38"
+        transform="rotate(45 126 395)"
+      />
+
+      <ellipse
+        class="flower-leaf"
+        cx="52"
+        cy="280"
+        rx="12"
+        ry="35"
+        transform="rotate(-60 52 280)"
+      />
+
+      <ellipse
+        class="flower-leaf"
+        cx="155"
+        cy="570"
+        rx="13"
+        ry="38"
+        transform="rotate(55 155 570)"
+      />
+
+
+      <!-- زهرة -->
+
+      <g transform="translate(20 30)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-22"
+          rx="15"
+          ry="28"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="22"
+          cy="0"
+          rx="28"
+          ry="15"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="22"
+          rx="15"
+          ry="28"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-22"
+          cy="0"
+          rx="28"
+          ry="15"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="8"
+        />
+
+      </g>
+
+
+      <g transform="translate(140 345)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-19"
+          rx="13"
+          ry="25"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="20"
+          cy="0"
+          rx="25"
+          ry="13"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="19"
+          rx="13"
+          ry="25"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-20"
+          cy="0"
+          rx="25"
+          ry="13"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="7"
+        />
+
+      </g>
+
+
+      <g transform="translate(25 305)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-16"
+          rx="11"
+          ry="22"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="17"
+          cy="0"
+          rx="22"
+          ry="11"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="16"
+          rx="11"
+          ry="22"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-17"
+          cy="0"
+          rx="22"
+          ry="11"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="6"
+        />
+
+      </g>
+
+
+      <g transform="translate(170 530)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-20"
+          rx="13"
+          ry="26"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="21"
+          cy="0"
+          rx="26"
+          ry="13"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="20"
+          rx="13"
+          ry="26"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-21"
+          cy="0"
+          rx="26"
+          ry="13"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="7"
+        />
+
+      </g>
+
+
+      <g transform="translate(105 735)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-17"
+          rx="12"
+          ry="23"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="18"
+          cy="0"
+          rx="23"
+          ry="12"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="17"
+          rx="12"
+          ry="23"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-18"
+          cy="0"
+          rx="23"
+          ry="12"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="6"
+        />
+
+      </g>
+
+    </svg>
+
+  </div>
+
+
+  <!-- =====================================================
+       الزهور الثابتة - اليمين
+  ====================================================== -->
+
+  <div
+    class="background-flowers flowers-right"
+    aria-hidden="true"
+  >
+
+    <svg viewBox="0 0 220 900">
+
+      <path
+        class="flower-stem"
+        d="M105 900
+           C95 760 125 650 85 540
+           C55 455 85 355 45 250
+           C25 195 45 110 20 30"
+      />
+
+      <path
+        class="flower-stem"
+        d="M85 555
+           C135 500 155 425 140 345"
+      />
+
+      <path
+        class="flower-stem"
+        d="M70 455
+           C25 420 15 360 25 305"
+      />
+
+      <path
+        class="flower-stem"
+        d="M100 700
+           C150 650 175 590 170 530"
+      />
+
+
+      <ellipse
+        class="flower-leaf"
+        cx="74"
+        cy="680"
+        rx="15"
+        ry="42"
+        transform="rotate(-55 74 680)"
+      />
+
+      <ellipse
+        class="flower-leaf"
+        cx="120"
+        cy="625"
+        rx="14"
+        ry="38"
+        transform="rotate(50 120 625)"
+      />
+
+      <ellipse
+        class="flower-leaf"
+        cx="70"
+        cy="455"
+        rx="14"
+        ry="40"
+        transform="rotate(-65 70 455)"
+      />
+
+      <ellipse
+        class="flower-leaf"
+        cx="126"
+        cy="395"
+        rx="13"
+        ry="38"
+        transform="rotate(45 126 395)"
+      />
+
+      <ellipse
+        class="flower-leaf"
+        cx="52"
+        cy="280"
+        rx="12"
+        ry="35"
+        transform="rotate(-60 52 280)"
+      />
+
+      <ellipse
+        class="flower-leaf"
+        cx="155"
+        cy="570"
+        rx="13"
+        ry="38"
+        transform="rotate(55 155 570)"
+      />
+
+
+      <g transform="translate(20 30)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-22"
+          rx="15"
+          ry="28"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="22"
+          cy="0"
+          rx="28"
+          ry="15"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="22"
+          rx="15"
+          ry="28"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-22"
+          cy="0"
+          rx="28"
+          ry="15"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="8"
+        />
+
+      </g>
+
+
+      <g transform="translate(140 345)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-19"
+          rx="13"
+          ry="25"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="20"
+          cy="0"
+          rx="25"
+          ry="13"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="19"
+          rx="13"
+          ry="25"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-20"
+          cy="0"
+          rx="25"
+          ry="13"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="7"
+        />
+
+      </g>
+
+
+      <g transform="translate(25 305)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-16"
+          rx="11"
+          ry="22"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="17"
+          cy="0"
+          rx="22"
+          ry="11"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="16"
+          rx="11"
+          ry="22"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-17"
+          cy="0"
+          rx="22"
+          ry="11"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="6"
+        />
+
+      </g>
+
+
+      <g transform="translate(170 530)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-20"
+          rx="13"
+          ry="26"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="21"
+          cy="0"
+          rx="26"
+          ry="13"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="20"
+          rx="13"
+          ry="26"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-21"
+          cy="0"
+          rx="26"
+          ry="13"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="7"
+        />
+
+      </g>
+
+
+      <g transform="translate(105 735)">
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="-17"
+          rx="12"
+          ry="23"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="18"
+          cy="0"
+          rx="23"
+          ry="12"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="0"
+          cy="17"
+          rx="12"
+          ry="23"
+        />
+
+        <ellipse
+          class="flower-petal"
+          cx="-18"
+          cy="0"
+          rx="23"
+          ry="12"
+        />
+
+        <circle
+          class="flower-center"
+          cx="0"
+          cy="0"
+          r="6"
+        />
+
+      </g>
+
+    </svg>
+
+  </div>
+
+
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+
+  <header>
+
+    <div class="nav-container">
+
+
+      <a
+        href="index.html"
+        class="logo"
+      >
+
+        <div class="logo-icon">
+          ✦
+        </div>
+
+
+        <div class="logo-text">
+
+          <h1>
+            منصة نورهان التعليمية
+          </h1>
+
+          <span>
+            معًا نحو مستقبل أفضل
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <div class="teacher-badge">
+
+        👩‍🏫
+
+        لوحة المعلمة
+
+      </div>
+
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       MAIN
+  ====================================================== -->
+
+  <main>
+
+
+    <!-- =================================================
+         عنوان الصفحة
+    ================================================== -->
+
+    <section class="page-heading">
+
+      <div class="container">
+
+        <div class="small-title">
+          مساحة المعلمة
+        </div>
+
+
+        <h2>
+
+          اصنعي شرحك التعليمي
+
+          <span>
+            بأسلوب مختلف
+          </span>
+
+        </h2>
+
+
+        <p>
+
+          ارفعي محتوى الدرس، حددي طريقة الشرح،
+          ثم جهزي السيناريو قبل إنشاء الفيديو التعليمي.
+
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         مساحة إنشاء الفيديو
+    ================================================== -->
+
+    <section>
+
+      <div class="container">
+
+
+        <div class="workspace">
+
+
+          <!-- العنوان -->
+
+          <div class="workspace-title">
+
+            <div class="workspace-icon">
+              📚
+            </div>
+
+
+            <div>
+
+              <h3>
+                إنشاء فيديو تعليمي جديد
+              </h3>
+
+              <p>
+                ابدئي من ملف الدرس وصولًا إلى سيناريو جاهز للفيديو
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- =============================================
+               رفع الملف
+          ============================================== -->
+
+          <label
+            class="upload-box"
+            for="lessonFile"
+          >
+
+            <div class="upload-icon">
+              📄
+            </div>
+
+
+            <h4>
+              ارفعي ملف الدرس هنا
+            </h4>
+
+
+            <p>
+              PDF أو Word
+            </p>
+
+
+            <span class="upload-button">
+              اختيار ملف
+            </span>
+
+
+            <input
+              type="file"
+              id="lessonFile"
+              accept=".pdf,.doc,.docx"
+            />
+
+          </label>
+
+
+          <div
+            class="selected-file"
+            id="selectedFile"
+          ></div>
+
+
+          <!-- =============================================
+               بيانات الدرس
+          ============================================== -->
+
+          <div class="form-grid">
+
+
+            <div class="form-group">
+
+              <label>
+                المرحلة الدراسية
+              </label>
+
+
+              <select id="stage">
+
+                <option value="">
+                  اختاري المرحلة
+                </option>
+
+                <option>
+                  المرحلة الابتدائية
+                </option>
+
+                <option>
+                  المرحلة الإعدادية
+                </option>
+
+                <option>
+                  المرحلة الثانوية
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                الصف الدراسي
+              </label>
+
+
+              <select id="grade">
+
+                <option value="">
+                  اختاري الصف
+                </option>
+
+                <option>
+                  الصف الرابع الابتدائي
+                </option>
+
+                <option>
+                  الصف الخامس الابتدائي
+                </option>
+
+                <option>
+                  الصف السادس الابتدائي
+                </option>
+
+                <option>
+                  الصف الأول الإعدادي
+                </option>
+
+                <option>
+                  الصف الثاني الإعدادي
+                </option>
+
+                <option>
+                  الصف الثالث الإعدادي
+                </option>
+
+                <option>
+                  الصف الأول الثانوي
+                </option>
+
+                <option>
+                  الصف الثاني الثانوي
+                </option>
+
+                <option>
+                  الصف الثالث الثانوي
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                المادة
+              </label>
+
+
+              <select id="subject">
+
+                <option value="">
+                  اختاري المادة
+                </option>
+
+                <option>
+                  الدراسات الاجتماعية
+                </option>
+
+                <option>
+                  التاريخ
+                </option>
+
+                <option>
+                  الجغرافيا
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                اسم الدرس
+              </label>
+
+
+              <input
+                type="text"
+                id="lessonName"
+                placeholder="مثال: موقع ومظاهر سطح قارات العالم الجديد"
+              />
+
+            </div>
+
+
+            <div class="form-group full">
+
+              <label>
+                تعليمات خاصة للشرح
+              </label>
+
+
+              <textarea
+                id="instructions"
+                placeholder="اكتبي أي تعليمات تريدين من الذكاء الاصطناعي الالتزام بها أثناء إعداد الشرح..."
+              ></textarea>
+
+            </div>
+
+
+          </div>
+
+
+          <!-- =============================================
+               طريقة الشرح
+          ============================================== -->
+
+          <div class="workspace-title" style="margin-top:35px;">
+
+            <div class="workspace-icon">
+              🎓
+            </div>
+
+
+            <div>
+
+              <h3>
+                طريقة تقديم الشرح
+              </h3>
+
+              <p>
+                اختاري الأسلوب الذي يناسب طلابك
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="option-grid">
+
+
+            <div class="option">
+
+              <input
+                type="radio"
+                name="explanation"
+                id="story"
+                checked
+              >
+
+              <label for="story">
+
+                <strong>
+                  شرح قصصي
+                </strong>
+
+                <span>
+                  تحويل الدرس إلى رحلة وقصة تعليمية
+                </span>
+
+              </label>
+
+            </div>
+
+
+            <div class="option">
+
+              <input
+                type="radio"
+                name="explanation"
+                id="detailed"
+              >
+
+              <label for="detailed">
+
+                <strong>
+                  شرح تفصيلي
+                </strong>
+
+                <span>
+                  شرح كل نقطة ومعلومة بالتفصيل
+                </span>
+
+              </label>
+
+            </div>
+
+
+            <div class="option">
+
+              <input
+                type="radio"
+                name="explanation"
+                id="interactive"
+              >
+
+              <label for="interactive">
+
+                <strong>
+                  شرح تفاعلي
+                </strong>
+
+                <span>
+                  أسئلة ومواقف وتفاعل مع الطالب
+                </span>
+
+              </label>
+
+            </div>
+
+
+          </div>
+
+
+          <!-- =============================================
+               الصوت
+          ============================================== -->
+
+          <div class="form-grid">
+
+
+            <div class="form-group">
+
+              <label>
+                صوت الراوي
+              </label>
+
+
+              <select id="voice">
+
+                <option>
+                  صوت عربي نسائي هادئ
+                </option>
+
+                <option>
+                  صوت عربي نسائي حماسي
+                </option>
+
+                <option>
+                  صوت عربي رجالي هادئ
+                </option>
+
+                <option>
+                  صوت عربي رجالي حماسي
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                مدة الفيديو
+              </label>
+
+
+              <select id="duration">
+
+                <option>
+                  مدة مفتوحة حسب محتوى الدرس
+                </option>
+
+                <option>
+                  شرح مختصر
+                </option>
+
+                <option>
+                  شرح متوسط
+                </option>
+
+                <option>
+                  شرح مطول جدًا
+                </option>
+
+              </select>
+
+            </div>
+
+
+          </div>
+
+
+          <!-- =============================================
+               ملاحظة
+          ============================================== -->
+
+          <div class="tips">
+
+            <h4>
+              💡 ملاحظة مهمة
+            </h4>
+
+
+            <p>
+
+              سيتم تجهيز الشرح بناءً على محتوى الدرس والتعليمات التي تكتبينها،
+              مع إمكانية مراجعة وتعديل السيناريو قبل الانتقال إلى إنشاء الفيديو.
+
+            </p>
+
+          </div>
+
+
+          <!-- =============================================
+               الأزرار
+          ============================================== -->
+
+          <div class="actions">
+
+            <button
+              class="btn btn-primary"
+              onclick="analyzeLesson()"
+            >
+
+              🔍 تحليل الدرس وتجهيز الشرح
+
+            </button>
+
+
+            <button
+              class="btn btn-secondary"
+              onclick="clearForm()"
+            >
+
+              مسح البيانات
+
+            </button>
+
+          </div>
+
+
+          <!-- =============================================
+               حالة التحليل
+          ============================================== -->
+
+          <div
+            class="status-box"
+            id="statusBox"
+          >
+
+            <div class="loader"></div>
+
+
+            <h4>
+              جاري تجهيز الدرس...
+            </h4>
+
+
+            <p>
+              في النسخة النهائية سيتم هنا إرسال الملف إلى نظام الذكاء الاصطناعي.
+            </p>
+
+          </div>
+
+
+          <!-- =============================================
+               معاينة السيناريو
+          ============================================== -->
+
+          <div
+            class="script-preview"
+            id="scriptPreview"
+          >
+
+            <h4>
+              ✍️ معاينة وتعديل سيناريو الشرح
+            </h4>
+
+
+            <textarea
+              id="scriptText"
+            ></textarea>
+
+
+            <div class="actions">
+
+              <button
+                class="btn btn-primary"
+                onclick="prepareVideo()"
+              >
+
+                🎬 تجهيز الفيديو
+
+              </button>
+
+
+              <button
+                class="btn btn-secondary"
+                onclick="saveScript()"
+              >
+
+                💾 حفظ التعديلات
+
+              </button>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             الفيديوهات التي تم إنشاؤها
+        ================================================== -->
+
+        <div class="section-heading">
+
+          <small>
+            إدارة المحتوى
+          </small>
+
+
+          <h3>
+            فيديوهاتك التعليمية
+          </h3>
+
+
+          <p>
+            هنا ستظهر الفيديوهات التي تم إنشاؤها ونشرها للطلاب
+          </p>
+
+        </div>
+
+
+        <div class="teacher-library">
+
+
+          <div class="library-card">
+
+            <div class="library-card-icon">
+              🌍
+            </div>
+
+
+            <h4>
+              الدراسات الاجتماعية
+            </h4>
+
+
+            <p>
+              سيتم عرض الدروس المنشورة هنا.
+            </p>
+
+
+            <span class="library-status">
+              لا توجد فيديوهات حاليًا
+            </span>
+
+          </div>
+
+
+          <div class="library-card">
+
+            <div class="library-card-icon">
+              🏺
+            </div>
+
+
+            <h4>
+              التاريخ
+            </h4>
+
+
+            <p>
+              سيتم عرض الدروس المنشورة هنا.
+            </p>
+
+
+            <span class="library-status">
+              لا توجد فيديوهات حاليًا
+            </span>
+
+          </div>
+
+
+          <div class="library-card">
+
+            <div class="library-card-icon">
+              🗺️
+            </div>
+
+
+            <h4>
+              الجغرافيا
+            </h4>
+
+
+            <p>
+              سيتم عرض الدروس المنشورة هنا.
+            </p>
+
+
+            <span class="library-status">
+              لا توجد فيديوهات حاليًا
+            </span>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer>
+
+    <strong>
+      منصة نورهان التعليمية
+    </strong>
+
+    <br>
+
+    لوحة المعلمة — معًا نحو مستقبل أفضل 🤎
+
+  </footer>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script>
+
+
+    /* ==========================================
+       عرض اسم الملف
+    ========================================== */
+
+    const lessonFile =
+      document.getElementById("lessonFile");
+
+
+    const selectedFile =
+      document.getElementById("selectedFile");
+
+
+    lessonFile.addEventListener(
+      "change",
+      function () {
+
+        if (this.files.length > 0) {
+
+          const file =
+            this.files[0];
+
+          selectedFile.style.display =
+            "block";
+
+          selectedFile.textContent =
+            "📄 تم اختيار الملف: " +
+            file.name;
+
+        }
+
+      }
+    );
+
+
+    /* ==========================================
+       تحليل الدرس
+    ========================================== */
+
+    function analyzeLesson() {
+
+      const file =
+        lessonFile.files[0];
+
+      const lessonName =
+        document.getElementById("lessonName").value;
+
+      const statusBox =
+        document.getElementById("statusBox");
+
+      const scriptPreview =
+        document.getElementById("scriptPreview");
+
+      const scriptText =
+        document.getElementById("scriptText");
+
+
+      if (!file) {
+
+        alert(
+          "من فضلك اختاري ملف الدرس أولًا."
+        );
+
+        return;
+      }
+
+
+      if (!lessonName) {
+
+        alert(
+          "من فضلك اكتبي اسم الدرس."
+        );
+
+        return;
+      }
+
+
+      statusBox.style.display =
+        "block";
+
+
+      scriptPreview.style.display =
+        "none";
+
+
+      setTimeout(
+        function () {
+
+          statusBox.style.display =
+            "none";
+
+
+          scriptPreview.style.display =
+            "block";
+
+
+          scriptText.value =
+
+`عنوان الدرس:
+${lessonName}
+
+
+🎬 مقدمة الدرس:
+
+أهلًا بكم يا أبطال في درسنا الجديد.
+
+اليوم سنبدأ رحلة تعليمية نتعرف فيها على أهم أفكار الدرس، ونفهم الأحداث والمعلومات بطريقة مترابطة وبسيطة.
+
+
+📚 شرح الدرس:
+
+سيتم هنا في النسخة النهائية قراءة محتوى ملف الدرس بالكامل بواسطة الذكاء الاصطناعي، ثم تحويله إلى شرح تعليمي مفصل.
+
+سيتم الحفاظ على المعلومات والأرقام والمصطلحات والأسماء والأحداث الواردة في المصدر، مع ترتيبها في صورة شرح واضح وقصصي.
+
+
+🧠 التوضيح:
+
+سيتم إضافة أمثلة وتوضيحات وأسئلة أثناء الشرح حسب التعليمات التي تحددها المعلمة.
+
+
+📝 المراجعة:
+
+في نهاية الدرس سيتم إعداد مراجعة شاملة لأهم النقاط التي تم شرحها.
+
+`;
+
+        },
+        1500
+      );
+
+    }
+
+
+    /* ==========================================
+       حفظ السيناريو
+    ========================================== */
+
+    function saveScript() {
+
+      alert(
+        "تم حفظ التعديلات مؤقتًا في هذه الواجهة.\n\nفي المرحلة القادمة سيتم ربط الحفظ بقاعدة بيانات حقيقية."
+      );
+
+    }
+
+
+    /* ==========================================
+       تجهيز الفيديو
+    ========================================== */
+
+    function prepareVideo() {
+
+      alert(
+        "🎬 تم تجهيز السيناريو.\n\nالخطوة التالية ستكون ربط هذه الصفحة بمحرك الذكاء الاصطناعي لإنشاء الفيديو فعليًا."
+      );
+
+    }
+
+
+    /* ==========================================
+       مسح النموذج
+    ========================================== */
+
+    function clearForm() {
+
+      document
+        .querySelectorAll("input, textarea")
+        .forEach(
+          function (element) {
+
+            if (
+              element.type !== "radio"
+            ) {
+
+              element.value = "";
+
+            }
+
+          }
+        );
+
+
+      document
+        .querySelectorAll("select")
+        .forEach(
+          function (element) {
+
+            element.selectedIndex = 0;
+
+          }
+        );
+
+
+      selectedFile.style.display =
+        "none";
+
+
+      document
+        .getElementById("statusBox")
+        .style.display =
+        "none";
+
+
+      document
+        .getElementById("scriptPreview")
+        .style.display =
+        "none";
+
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>
